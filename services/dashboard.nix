@@ -6,7 +6,7 @@
     listenPort = 8082;
     
     # Autorisations d'accès (Anti-usurpation)
-    allowedHosts = "192.168.42.200:8082,dashboard.jarvis-edith-ben.duckdns.org"; 
+    allowedHosts = "192.168.42.200:8082,100.64.0.2:8082";
 
     # 1. EN-TÊTE MINIMALISTE (Ressources serveur uniquement)
     widgets = [
@@ -20,8 +20,12 @@
       {
         resources = {
           cpu = true;
+          units = "metric";
+          cputemp = true;
+          tempmin = 0;
+          tempmax = 100;
           memory = true;
-          disk = "/";
+          disk = [ "/" "/mnt/disk1" ];
         };
       }
     ];
@@ -31,15 +35,13 @@
       {
         "Infrastructure" = [
           {
-            "Uptime Kuma" = {
-              icon = "adguard-home.svg";
-              href = "http://127.0.0.1:3001";
+            "Scrutiny" = {
+              icon = "scrutiny.svg";
+              href = "http://192.168.42.200:8085";
+              ping = "http://127.0.0.1:8085";
               widget = {
-                type = "uptimekuma";
-                # L'adresse interne pour que Homepage contacte Kuma directement
-                url = "http://127.0.0.1:3001";
-                # Le slug (ou l'ID) que tu as récupéré à l'étape 1
-                slug = "default";
+                type = "scrutiny";
+                url = "http://192.168.42.200:8085";
               };
             };
           }
@@ -47,64 +49,162 @@
           {
             "AdGuard Home" = {
               icon = "adguard-home.svg";
-              href = "http://100.64.0.1:3000";
-              description = "Bloqueur de publicités & DNS";
+              href = "http://192.168.42.200:3000";
+              ping = "http://127.0.0.1:3000";
+              widget = {
+                type = "adguard";
+                url = "http://192.168.42.200:3000";
+                username = "admin";
+                password = "@uXB1bJKEG94EaO#";
+              };
             };
           }
 
           {
-            "Actual" = {
+            "Backup Kopia" = {
+              icon = "kopia.png";
+              href = "https://secure.backblaze.com/b2_buckets.htm";
+              widget = {
+                type = "customapi";
+                url = "http://localhost:8081/kopia-stats.json";
+                mappings = [
+                  {
+                    field = "status";
+                    label = "Status";
+                  }
+                  {
+                    field = "last_run";
+                    label = "Last Run";
+                  }
+                  {
+                    field = "size";
+                    label = "Backup Size";
+                  }
+                  {
+                    field = "duration";
+                    label = "Duration";
+                  }
+                ];
+              };
+            };
+          }
+        ];
+      }
+
+      {
+        "Utilities" = [
+          {
+            "Syncthing" = {
+              icon = "syncthing.svg";
+              href = "http://192.168.42.200:8384";
+              ping = "http://127.0.0.1:8384";
+            };
+          }
+
+          {
+            "File Browser" = {
+              icon = "filebrowser.svg";
+              href = "http://192.168.42.200:8080";
+              ping = "http://127.0.0.1:8080";
+            };
+          }
+
+          {
+            "Immich" = {
+              icon = "immich.svg";
+              href = "https://immich.jarvis-edith-ben.duckdns.org";
+              ping = "http://127.0.0.1:2283";
+            };
+          }
+
+          {
+            "Actual Budget" = {
               icon = "actual-budget.svg";
               href = "https://budget.jarvis-edith-ben.duckdns.org";
-              description = "Budget";
+              ping = "http://127.0.0.1:5006";
             };
           }
-        ];
-      }
-      {
-        "Multimédia" = [
+
           {
-            "Jellyfin" = {
-              icon = "jellyfin.svg";
-              href = "http://192.168.42.200:8096";
-              description = "Plateforme de streaming maison";
-              ping = "http://127.0.0.1:8096";
+            "Paperless Ngx" = {
+              icon = "paperless-ngx.svg";
+              href = "https://paperless.jarvis-edith-ben.duckdns.org";
+              ping = "http://127.0.0.1:28981";
+            };
+          }
+
+          {
+            "Vaultwarden" = {
+              icon = "vaultwarden.svg";
+              href = "https://vault.jarvis-edith-ben.duckdns.org";
+              ping = "http://127.0.0.1:8222";
             };
           }
         ];
       }
+
       {
-        "Automatisation" = [
+        "Media" = [
+        
           {
             "Radarr" = {
               icon = "radarr.svg";
               href = "http://192.168.42.200:7878";
-              description = "Gestion des films";
+              ping = "http://127.0.0.1:7878";
+              widget = {
+                type = "radarr";
+                url = "http://127.0.0.1:7878";
+                key = "RADARR_API";
+                fields = [ "movies" "wanted" "queued" ];
+              };
             };
           }
           {
             "Sonarr" = {
               icon = "sonarr.svg";
               href = "http://192.168.42.200:8989"; 
-              description = "Gestion des séries";
+              ping = "http://127.0.0.1:8989"; 
+              widget = {
+                type = "sonarr";
+                url = "http://127.0.0.1:8989";
+                key = "SONARR_API";
+                fields = [ "series" "wanted" "queued" ];
+              };
+            };
+          }
+          {
+            "Prowlarr" = {
+              icon = "prowlarr.svg";
+              href = "http://192.168.42.200:9696"; 
+              ping = "http://127.0.0.1:9696"; 
             };
           }
           {
             "Bazarr" = {
               icon = "bazarr.svg";
               href = "http://192.168.42.200:6767"; 
-              description = "Gestion des sous-titres";
+              ping = "http://127.0.0.1:6767"; 
             };
           }
-        ];
-      }
-      {
-        "Téléchargements" = [
           {
             "Transmission" = {
               icon = "transmission.svg";
               href = "http://192.168.42.200:9091";
-              description = "Client Torrent";
+              ping = "http://127.0.0.1:9091";
+            };
+          }
+          {
+            "Jellyfin" = {
+              icon = "jellyfin.svg";
+              href = "https://jarvis-edith-ben.duckdns.org";
+              ping = "http://127.0.0.1:8096";
+            };
+          }
+          {
+            "Seerr" = {
+              icon = "overseerr.svg";
+              href = "https://seerr.jarvis-edith-ben.duckdns.org";
+              ping = "http://127.0.0.1:5055";
             };
           }
         ];

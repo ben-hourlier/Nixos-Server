@@ -15,7 +15,7 @@
       "ratio-limit" = 0;
       download-dir = "/var/lib/media/downloads";
       incomplete-dir = "/var/lib/media/.incomplete";
-      rpc-bind-address = "-1.0.0.0"; # Attention: à protéger par ton Firewall/VPN
+      rpc-bind-address = "0.0.0.0"; # Attention: à protéger par ton Firewall/VPN
       rpc-whitelist-enabled = false;
       umask = 1; # Important: crée les fichiers avec les droits 775 (groupe modifiable)
     };
@@ -52,18 +52,21 @@
     "d /var/lib/media/shows 2775 root media -"
   ];
 
-  virtualisation.docker.enable = true;
-  virtualisation.oci-containers.backend = "docker";
 
-  virtualisation.oci-containers.containers.maintainerr = {
-    image = "ghcr.io/maintainerr/maintainerr:latest";
-    ports = [ "6246:6246" ]; # Le port par défaut de l'interface
-    volumes = [
-      # On sauvegarde la base de données de Maintainerr sur ton disque
-      "/var/lib/maintainerr:/opt/data"
-    ];
-    environment = {
-      TZ = "Europe/Paris"; # Pour que les règles de temps soient exactes
+  systemd.services.media-cleanup = {
+    description = "Nettoyage automatique Radarr/Sonarr si disque plein";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "ben";
+      ExecStart = "/etc/nixos/scripts/cleanup-media.sh";
+    };
+  };
+
+  systemd.timers.media-cleanup = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
     };
   };
 }
