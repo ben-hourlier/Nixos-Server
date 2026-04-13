@@ -5,6 +5,7 @@
     [ 
       ./hardware-configuration.nix
 
+      ./services/backup.nix
       ./services/dashboard.nix
       ./services/ddns.nix
       ./services/immich.nix
@@ -16,6 +17,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   programs.nix-ld.enable = true;
+
+  programs.fuse.userAllowOther = true;
+
+  powerManagement.cpuFreqGovernor = "powersave";
+  services.fstrim.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -100,6 +106,9 @@
       8082
       8222
       5006
+
+      8085
+      3001
     ];
 
     allowedUDPPorts = [ 
@@ -152,7 +161,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    curl
     git
+    jq
     neovim 
     wget
   ];

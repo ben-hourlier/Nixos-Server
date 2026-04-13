@@ -13,7 +13,7 @@
   mediaLocation = "/var/lib/immich"; 
 
   # (Optionnel) Pour utiliser l'accélération matérielle de ton i5 Intel pour l'IA
-  machine-learning.enable = false;
+  machine-learning.enable = true;
   };
 
   services.paperless = {
@@ -96,16 +96,25 @@
     CapabilityBoundingSet = pkgs.lib.mkForce [ "CAP_NET_BIND_SERVICE" "CAP_NET_RAW" ];
   };
 
-  services.uptime-kuma = {
+  services.scrutiny = {
     enable = true;
-    # On force l'écoute sur localhost pour que seul Caddy puisse y accéder
+    collector.enable = true;
     settings = {
-      HOST = "127.0.0.1";
-      PORT = "3001";
+      web = {
+        listen = {
+          address = "0.0.0.0";
+          port = 8085; # Remplace par le port que tu préfères (ex: 8085)
+        };
+      };
     };
   };
 
-  services.netdata.enable = true;
+  systemd.services.scrutiny-collector = {
+    serviceConfig = {
+      User = "root";
+      Group = "root";
+    };
+  };
 
   services.actual = {
   enable = true;
