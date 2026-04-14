@@ -1,5 +1,5 @@
 {
-  description = "Homelab EliteDesk 800 G4";
+  description = "Server EliteDesk 800 G4";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; 

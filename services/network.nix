@@ -64,6 +64,7 @@
     ];
 
     allowedUDPPorts = [ 
+      53 # DNS
       67 # DHCP server (68 for client)
       21027 # Syncthing search for local devices
       51820 # Wireguard

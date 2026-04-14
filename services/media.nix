@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
 let
   mediaCleanup = import ../scripts/media-cleanup.nix { inherit pkgs; };
 in
@@ -27,6 +28,18 @@ in
   services.bazarr = { enable = true; group = "media"; };
   services.prowlarr.enable = true;
 
+  systemd.services.radarr = {
+    serviceConfig = {
+      UMask = lib.mkForce "0002";
+    };
+  };
+
+  systemd.services.sonarr = {
+    serviceConfig = {
+      UMask = lib.mkForce "0002";
+    };
+  };
+
   services.flaresolverr = {
     enable = true;
     port = 8191;
@@ -41,13 +54,12 @@ in
     openPeerPorts = true;
     settings = {
       "ratio-limit-enabled" = true;
-      # On fixe la limite à 0 (Arrêt immédiat après téléchargement)
-      "ratio-limit" = 0;
+      "ratio-limit" = 0; 
       download-dir = "/var/lib/media/downloads";
       incomplete-dir = "/var/lib/media/.incomplete";
-      rpc-bind-address = "0.0.0.0"; # Attention: à protéger par ton Firewall/VPN
+      rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
-      umask = 1; # Important: crée les fichiers avec les droits 775 (groupe modifiable)
+      umask = 2;
     };
   };
 
