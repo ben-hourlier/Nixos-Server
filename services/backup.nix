@@ -10,20 +10,20 @@ let
   ];
 in
 {
-  environment.systemPackages = with pkgs; [ kopia git ];
+  # ====================================================================
+  # --- Github synchronisation ---
+  # ====================================================================  
 
-  # --- 1. Synchro GitHub ---
   systemd.services.github-sync = {
     description = "GitHub Repositories Sync";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
-    
+    path = with pkgs; [ git openssh ];
+
     serviceConfig = {
       Type = "oneshot";
       User = "root"; 
     };
-
-    path = with pkgs; [ git openssh ];
 
     script = ''
       mkdir -p /mnt/disk1/backups/github
@@ -40,11 +40,16 @@ in
     '';
   };
 
-  # --- 2. Sauvegarde Globale (Dumps + Kopia) ---
+
+  # ====================================================================
+  # --- Backup ---
+  # ====================================================================
+
   systemd.services.kopia-server-backup = {
-    description = "Kopia Backup (Dumps, Media, GitHub, System)";
+    description = "Kopia Backup";
     wants = [ "github-sync.service" ];
     after = [ "github-sync.service" "mnt-disk1.mount" ];
+    path = with pkgs; [ kopia sqlite postgresql sudo findutils coreutils gawk ];
 
     serviceConfig = {
       Type = "oneshot";
@@ -52,22 +57,15 @@ in
       EnvironmentFile = "/root/.config/kopia/secret.env";
     };
 
-    # Ajout de findutils pour chercher les db Actual Budget
-    path = with pkgs; [ kopia sqlite postgresql sudo findutils coreutils gawk ];
-
     script = ''
-      # 1. On initialise les variables de temps et le chemin
       START_TIME=$(date +%s)
       JSON_PATH="/var/www/homepage/kopia-stats.json"
       mkdir -p $(dirname $JSON_PATH)
 
-      # 2. On définit la fonction de fin (Le Dashboard Builder)
-      # Cette fonction s'exécutera automatiquement à la fermeture du script
       generate_dashboard() {
         EXIT_CODE=$?
         END_TIME=$(date +%s)
         
-        # Calcul de la durée en minutes et secondes
         DURATION=$((END_TIME - START_TIME))
         MINS=$((DURATION / 60))
         SECS=$((DURATION % 60))
@@ -75,39 +73,34 @@ in
         LAST_RUN=$(date +"%d/%m - %H:%M")
 
         if [ $EXIT_CODE -eq 0 ]; then
-          # Si tout s'est bien passé (Code 0)
           STATUS="Success"
-          # On calcule la taille uniquement si le montage est sain
           SIZE=$(${pkgs.coreutils}/bin/du -sh /mnt/disk1/backups/kopia | ${pkgs.gawk}/bin/awk '{print $1}')
         else
-          # Si le script a planté
           STATUS="Failure"
           SIZE="Unknown"
         fi
 
-        # Génération du JSON
         echo "{\"status\": \"$STATUS\", \"size\": \"$SIZE\", \"last_run\": \"$LAST_RUN\", \"duration\": \"''${MINS}m ''${SECS}s\"}" > $JSON_PATH
 
         chmod 644 $JSON_PATH
         chmod 755 /var/www/homepage
       }
 
-      # 3. On "arme" le piège : peu importe comment le script se termine (EXIT), on lance generate_dashboard
       trap generate_dashboard EXIT
       set -e
       DUMP_DIR="/mnt/disk1/backups/dumps"
       mkdir -p $DUMP_DIR
 
-      # --- EXTRACTION DES BASES DE DONNÉES ---
+      # --- Databases extraction ---
       
-      # Vaultwarden
+      # Vaultwarden & Paperless
       sqlite3 /var/lib/vaultwarden/db.sqlite3 ".backup '$DUMP_DIR/vaultwarden.db'"
       sqlite3 /var/lib/paperless/db.sqlite3 ".backup '$DUMP_DIR/paperless.db'"
       
-      # Immich & Paperless (PostgreSQL)
+      # Immich (PostgreSQL)
       sudo -u postgres pg_dump immich > $DUMP_DIR/immich_db.sql
 
-      # Actual Budget (Recherche et dump de tous les fichiers SQLite)
+      # Actual Budget
       mkdir -p $DUMP_DIR/actual-budget
       ACTUAL_DIR="/var/lib/actual" # À adapter selon ton installation
       if [ -d "$ACTUAL_DIR" ]; then
@@ -119,7 +112,8 @@ in
         done
       fi
 
-      # --- SYNCHRONISATION KOPIA ---
+
+      # --- KOPIA ---
       
       TARGETS="
         $DUMP_DIR
@@ -137,10 +131,7 @@ in
         /etc/nixos
       "
 
-      if ! kopia repository status | grep -q "/mnt/disk1/backups/kopia"; then
-        kopia repository connect filesystem --path /mnt/disk1/backups/kopia
-      fi
-
+      kopia repository connect filesystem --path /mnt/disk1/backups/kopia
       kopia snapshot create $TARGETS
 
       kopia policy set --global \
@@ -152,9 +143,7 @@ in
         --keep-annual 1 \
         --compression=zstd
       
-      # Nettoyage
       rm -rf $DUMP_DIR/*
-      
       kopia maintenance run
 
       kopia repository sync-to b2 \
@@ -164,7 +153,6 @@ in
     '';
   };
 
-  # --- 3. Planification ---
   systemd.timers.kopia-server-backup = {
     wantedBy = [ "timers.target" ];
     timerConfig = {

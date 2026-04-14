@@ -1,10 +1,40 @@
 { config, pkgs, ... }:
-
+let
+  mediaCleanup = import ../scripts/media-cleanup.nix { inherit pkgs; };
+in
 {
-  # 1. Création du groupe commun
-  users.groups.media = { gid = 1500; }; # Un GID fixe pour la cohérence
+  # --- Options ---
 
-  # 2. Configuration de Transmission (Le client de téléchargement)
+  environment.systemPackages = [
+    mediaCleanup
+  ];
+
+  users.groups.media = { gid = 1500; };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/media 2775 root media -"
+    "d /var/lib/media/downloads 2775 root media -"
+    "d /var/lib/media/.incomplete 2775 root media -"
+    "d /var/lib/media/movies 2775 root media -"
+    "d /var/lib/media/shows 2775 root media -"
+  ];
+
+
+  # --- Arr Suite ---
+
+  services.sonarr = { enable = true; group = "media"; };
+  services.radarr = { enable = true; group = "media"; };
+  services.bazarr = { enable = true; group = "media"; };
+  services.prowlarr.enable = true;
+
+  services.flaresolverr = {
+    enable = true;
+    port = 8191;
+  };
+  
+
+  # --- Download Client ---
+
   services.transmission = {
     enable = true;
     group = "media";
@@ -21,44 +51,23 @@
     };
   };
 
-  # 3. La suite Arr
-  services.sonarr = { enable = true; group = "media"; };
-  services.radarr = { enable = true; group = "media"; };
-  services.prowlarr.enable = true;
-  services.flaresolverr = {
-    enable = true;
-    port = 8191;
-  };
-  services.bazarr = {
-    enable = true;
-    group = "media";
-  };
 
-  # Le serveur multimédia
+  # --- User interface ---  
+
   services.jellyfin.enable = true;
-  
-  # On ajoute l'utilisateur jellyfin à notre groupe "media" magique
   users.users.jellyfin.extraGroups = [ "media" "render" "video" ];
 
-  # 4. L'interface de requête (Overseerr)
-  services.seerr.enable = true; # Port 5055 par défaut
+  services.seerr.enable = true;
 
-  # 5. Création des répertoires avec les bonnes permissions
-  systemd.tmpfiles.rules = [
-    "d /var/lib/media 2775 root media -"
-    "d /var/lib/media/downloads 2775 root media -"
-    "d /var/lib/media/.incomplete 2775 root media -"
-    "d /var/lib/media/movies 2775 root media -"
-    "d /var/lib/media/shows 2775 root media -"
-  ];
-
+  
+  # --- Media management ---
 
   systemd.services.media-cleanup = {
-    description = "Nettoyage automatique Radarr/Sonarr si disque plein";
+    description = "Media management for Radarr/Sonarr";
     serviceConfig = {
       Type = "oneshot";
       User = "ben";
-      ExecStart = "/etc/nixos/scripts/cleanup-media.sh";
+      ExecStart = "media-cleanup";
     };
   };
 

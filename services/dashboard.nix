@@ -4,11 +4,8 @@
   services.homepage-dashboard = {
     enable = true;
     listenPort = 8082;
-    
-    # Autorisations d'accès (Anti-usurpation)
     allowedHosts = "192.168.42.200:8082,100.64.0.2:8082";
 
-    # 1. EN-TÊTE MINIMALISTE (Ressources serveur uniquement)
     widgets = [
       {
         greeting = {
@@ -16,7 +13,6 @@
           text = "Server1-NixOS";
         };
       }
-
       {
         resources = {
           cpu = true;
@@ -30,7 +26,6 @@
       }
     ];
 
-    # 2. VOS SERVICES (Interface propre, sans API ni mots de passe en clair)
     services = [
       {
         "Infrastructure" = [
@@ -45,7 +40,6 @@
               };
             };
           }
-
           {
             "AdGuard Home" = {
               icon = "adguard-home.svg";
@@ -59,7 +53,6 @@
               };
             };
           }
-
           {
             "Backup Kopia" = {
               icon = "kopia.png";
@@ -90,7 +83,6 @@
           }
         ];
       }
-
       {
         "Utilities" = [
           {
@@ -100,7 +92,6 @@
               ping = "http://127.0.0.1:8384";
             };
           }
-
           {
             "File Browser" = {
               icon = "filebrowser.svg";
@@ -108,7 +99,6 @@
               ping = "http://127.0.0.1:8080";
             };
           }
-
           {
             "Immich" = {
               icon = "immich.svg";
@@ -116,7 +106,6 @@
               ping = "http://127.0.0.1:2283";
             };
           }
-
           {
             "Actual Budget" = {
               icon = "actual-budget.svg";
@@ -124,7 +113,6 @@
               ping = "http://127.0.0.1:5006";
             };
           }
-
           {
             "Paperless Ngx" = {
               icon = "paperless-ngx.svg";
@@ -132,7 +120,6 @@
               ping = "http://127.0.0.1:28981";
             };
           }
-
           {
             "Vaultwarden" = {
               icon = "vaultwarden.svg";
@@ -142,10 +129,8 @@
           }
         ];
       }
-
       {
         "Media" = [
-        
           {
             "Radarr" = {
               icon = "radarr.svg";
