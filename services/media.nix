@@ -79,7 +79,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       User = "ben";
-      ExecStart = "media-cleanup";
+      ExecStart = "${mediaCleanup}/bin/media-cleanup";
     };
   };
 
