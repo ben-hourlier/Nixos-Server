@@ -73,6 +73,7 @@
 
   fileSystems."/mnt/disk1" = {
     device = "/dev/disk/by-uuid/5acaa5dd-a82b-4021-baad-629ef73c692c"; 
+    fsType = "ext4";
     options = [ 
       "users"     
       "nofail"

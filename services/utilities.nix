@@ -14,7 +14,7 @@
     address = "127.0.0.1";
     port = 28981;
     settings = {
-      PAPERLESS_URL = "https://paperless.jarvis-edith-ben.duckdns.org";
+      PAPERLESS_URL = "https://paperless.bhr-sys.com";
       PAPERLESS_OCR_LANGUAGE = "fra"; 
       
       PAPERLESS_TIME_ZONE = "Europe/Paris";
@@ -34,13 +34,13 @@
 
     settings = {
       devices = {
-        "desktop1-nixos" = { id = "IPAQT2V-SLNXYUW-T77SYHC-KDR275S-DPV5QZW-QAPY66E-CXPZ2NG-7GDIJAO"; };
-        "laptop1-nixos" = { id = "B6MKGEM-INXUZW7-UILXTAF-6F7C5VX-YUSSK6D-JXK2FIV-OENA7DR-IKIHUAN"; };
+        "desktop1-nixos" = { id = "DBFJJQQ-A2EOXSZ-MLGN7ZX-YC7BIQC-F4BE746-P5X73OV-3FT7HMC-NXS6BAS"; };
+        "laptop1-nixos" = { id = "UWV3TFY-GIWW3T5-VRTLB25-XDDUT36-64PK4FG-LTVKPMS-TEROAPL-XLAUZAO"; };
       };
     
       folders = {
-        "sync" = {
-          path = "/var/lib/syncthing/sync";
+        "Sync" = {
+          path = "/var/lib/syncthing/Sync";
           devices = [ "desktop1-nixos" "laptop1-nixos" ];
         };
       };
@@ -52,7 +52,7 @@
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.filebrowser}/bin/filebrowser -a 0.0.0.0 -p 8080 -r /var/lib/syncthing/sync -d /var/lib/syncthing/filebrowser.db";
+      ExecStart = "${pkgs.filebrowser}/bin/filebrowser -a 0.0.0.0 -p 8080 -r /var/lib/syncthing/Sync -d /var/lib/syncthing/filebrowser.db";
       Restart = "always";
       User = "syncthing"; 
     };
@@ -63,17 +63,16 @@
     config = {
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;
-      SIGNUPS_ALLOWED = false; # À passer en false après création du compte !
-      # Utilisation de Tailscale pour le domaine
-      DOMAIN = "https://vault.jarvis-edith-ben.duckdns.org";
+      SIGNUPS_ALLOWED = false;
+      DOMAIN = "https://vault.bhr-sys.com";
     };
   };
 
   services.actual = {
-  enable = true;
-  settings = {
-    port = 5006;
+    enable = true;
+    settings = {
+      port = 5006;
+    };
   };
-};
 
 }

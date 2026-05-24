@@ -95,35 +95,35 @@
           {
             "File Browser" = {
               icon = "filebrowser.svg";
-              href = "http://192.168.42.200:8080";
+              href = "https://files.bhr-sys.com";
               ping = "http://127.0.0.1:8080";
             };
           }
           {
             "Immich" = {
               icon = "immich.svg";
-              href = "https://immich.jarvis-edith-ben.duckdns.org";
+              href = "https://immich.bhr-sys.com";
               ping = "http://127.0.0.1:2283";
             };
           }
           {
             "Actual Budget" = {
               icon = "actual-budget.svg";
-              href = "https://budget.jarvis-edith-ben.duckdns.org";
+              href = "https://budget.bhr-sys.com";
               ping = "http://127.0.0.1:5006";
             };
           }
           {
             "Paperless Ngx" = {
               icon = "paperless-ngx.svg";
-              href = "https://paperless.jarvis-edith-ben.duckdns.org";
+              href = "https://paperless.bhr-sys.com";
               ping = "http://127.0.0.1:28981";
             };
           }
           {
             "Vaultwarden" = {
               icon = "vaultwarden.svg";
-              href = "https://vault.jarvis-edith-ben.duckdns.org";
+              href = "https://vault.bhr-sys.com";
               ping = "http://127.0.0.1:8222";
             };
           }
@@ -181,14 +181,14 @@
           {
             "Jellyfin" = {
               icon = "jellyfin.svg";
-              href = "https://jarvis-edith-ben.duckdns.org";
+              href = "https://jellyfin.bhr-sys.com";
               ping = "http://127.0.0.1:8096";
             };
           }
           {
             "Seerr" = {
               icon = "overseerr.svg";
-              href = "https://seerr.jarvis-edith-ben.duckdns.org";
+              href = "https://seerr.bhr-sys.com";
               ping = "http://127.0.0.1:5055";
             };
           }

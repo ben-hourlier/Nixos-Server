@@ -81,7 +81,7 @@
     address = "0.0.0.0";
     port = 9080;
     settings = {
-      server_url = "https://vpn.jarvis-edith-ben.duckdns.org"; 
+      server_url = "https://vpn.bhr-sys.com"; 
       dns = {
         nameservers.global = [ "192.168.42.200" ];
         base_domain = "headscale.net"; # Suffix for devices name MagicDNS
@@ -101,31 +101,35 @@
     enable = true;
     virtualHosts = {
 
-      "jarvis-edith-ben.duckdns.org" = {
-        extraConfig = "reverse_proxy localhost:8096";
-      };
-
-      "budget.jarvis-edith-ben.duckdns.org" = {
+      "budget.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:5006";
       };
 
-      "immich.jarvis-edith-ben.duckdns.org" = {
+      "files.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8080";
+      };
+
+      "immich.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:2283";
       };
 
-      "paperless.jarvis-edith-ben.duckdns.org" = {
+      "jellyfin.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8096";
+      };
+
+      "paperless.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:28981";
       };
 
-      "seerr.jarvis-edith-ben.duckdns.org" = {
+      "seerr.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:5055";
       };
 
-      "vault.jarvis-edith-ben.duckdns.org" = {
+      "vault.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8222";
       };
 
-      "vpn.jarvis-edith-ben.duckdns.org" = {
+      "vpn.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:9080";
       };
 
