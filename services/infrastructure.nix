@@ -14,18 +14,20 @@
 
   # --- AdGuard ---
 
-  services.adguardhome = {
-    enable = true;
-    openFirewall = true;
-    port = 3000; 
-  };
+  # Disabled because too slow.
+
+  # services.adguardhome = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   port = 3000; 
+  # };
 
   # More flexible rules for AdGuard
-  systemd.services.adguardhome.serviceConfig = {
-    RestrictAddressFamilies = pkgs.lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_PACKET" "AF_NETLINK" ];
-    AmbientCapabilities = pkgs.lib.mkForce [ "CAP_NET_BIND_SERVICE" "CAP_NET_RAW" ];
-    CapabilityBoundingSet = pkgs.lib.mkForce [ "CAP_NET_BIND_SERVICE" "CAP_NET_RAW" ];
-  };
+  # systemd.services.adguardhome.serviceConfig = {
+  #   RestrictAddressFamilies = pkgs.lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_PACKET" "AF_NETLINK" ];
+  #   AmbientCapabilities = pkgs.lib.mkForce [ "CAP_NET_BIND_SERVICE" "CAP_NET_RAW" ];
+  #   CapabilityBoundingSet = pkgs.lib.mkForce [ "CAP_NET_BIND_SERVICE" "CAP_NET_RAW" ];
+  # };
 
 
   # --- Scrutiny ---
