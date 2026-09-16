@@ -5,7 +5,6 @@ let
     "git@github.com:jarvis-ed1th/FocusOS.git"
     "git@github.com:jarvis-ed1th/Digital-Brain.git"
     "git@github.com:jarvis-ed1th/expense-report-creator.git"
-    "git@github.com:jarvis-ed1th/n7-deepening.git"
     "git@github.com:jarvis-ed1th/server1-nixos.git"
   ];
 in
@@ -121,10 +120,10 @@ in
 
         /var/lib/immich
         /var/lib/paperless
-        /var/lib/syncthing/sync/01-PROJECTS
-        /var/lib/syncthing/sync/02-AREAS
-        /var/lib/syncthing/sync/03-RESSOURCES
-        /var/lib/syncthing/sync/04-ARCHIVES
+        /var/lib/syncthing/Sync/01-PROJECTS
+        /var/lib/syncthing/Sync/02-AREAS
+        /var/lib/syncthing/Sync/03-RESSOURCES
+        /var/lib/syncthing/Sync/04-ARCHIVES
 
         
         /mnt/disk1/backups/github

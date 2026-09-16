@@ -14,8 +14,8 @@
     prefixLength = 24;
   }];
 
-  networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = false;
+  # networking.useDHCP = false;
+  # networking.interfaces.eno1.useDHCP = false;
 
   # Optimize performances for streaming,VPN and server access.
   services.udev.extraRules = ''
@@ -56,6 +56,7 @@
       3001 # AdGuard
       5006 # Actual Budget
       8080 # FileBrowser
+      8081 # Media Cleaner / local file server
       8082 # Homepage
       8085 # Scrutiny
       8384 # Syncthing
@@ -117,6 +118,10 @@
         extraConfig = "reverse_proxy localhost:8096";
       };
 
+      "ntfy.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:2586";
+      };
+
       "paperless.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:28981";
       };
@@ -133,7 +138,7 @@
         extraConfig = "reverse_proxy localhost:9080";
       };
 
-      "http://localhost:8081" = {
+      ":8081" = {
         # Caddyfile language injection
         # "root *" define root folder for all requests
         # activate file_server mode (html, css, images)
@@ -144,7 +149,25 @@
           header Access-Control-Allow-Origin "*"
         '';
       };
-      
+
+      # Test for maintenance page
+      "test.bhr-sys.com" = {
+        extraConfig = ''
+          root * /var/www/maintenance
+          error 503
+
+          handle_errors {
+            rewrite * /maintenance.html
+            file_server
+          }
+        '';
+      };
     };
   };
+
+  # Dans ta configuration NixOS (ex: server-configuration.nix)
+  systemd.tmpfiles.rules = [
+    "d /var/www/maintenance 0755 caddy caddy -"
+    "f /var/www/maintenance/maintenance.html 0644 caddy caddy - <html><body><h1>Serveur en maintenance</h1><p>Nous revenons vite !</p></body></html>"
+  ];
 }

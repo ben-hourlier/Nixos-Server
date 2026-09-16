@@ -1,14 +1,7 @@
 { config, pkgs, lib, ... }:
 
-let
-  mediaCleanup = import ../scripts/media-cleanup.nix { inherit pkgs; };
-in
 {
   # --- Options ---
-
-  environment.systemPackages = [
-    mediaCleanup
-  ];
 
   users.groups.media = { gid = 1500; };
 
@@ -70,24 +63,4 @@ in
   users.users.jellyfin.extraGroups = [ "media" "render" "video" ];
 
   services.seerr.enable = true;
-
-  
-  # --- Media management ---
-
-  systemd.services.media-cleanup = {
-    description = "Media management for Radarr/Sonarr";
-    serviceConfig = {
-      Type = "oneshot";
-      User = "ben";
-      ExecStart = "${mediaCleanup}/bin/media-cleanup";
-    };
-  };
-
-  systemd.timers.media-cleanup = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "hourly";
-      Persistent = true;
-    };
-  };
 }

@@ -40,19 +40,19 @@
               };
             };
           }
-          {
-            "AdGuard Home" = {
-              icon = "adguard-home.svg";
-              href = "http://192.168.42.200:3000";
-              ping = "http://127.0.0.1:3000";
-              widget = {
-                type = "adguard";
-                url = "http://192.168.42.200:3000";
-                username = "admin";
-                password = "@uXB1bJKEG94EaO#";
-              };
-            };
-          }
+          # {
+          #   "AdGuard Home" = {
+          #     icon = "adguard-home.svg";
+          #     href = "http://192.168.42.200:3000";
+          #     ping = "http://127.0.0.1:3000";
+          #     widget = {
+          #       type = "adguard";
+          #       url = "http://192.168.42.200:3000";
+          #       username = "admin";
+          #       password = "@uXB1bJKEG94EaO#";
+          #     };
+          #   };
+          # }
           {
             "Backup Kopia" = {
               icon = "kopia.png";
@@ -190,6 +190,26 @@
               icon = "overseerr.svg";
               href = "https://seerr.bhr-sys.com";
               ping = "http://127.0.0.1:5055";
+            };
+          }
+          {
+            "Media Cleaner" = {
+              icon = "si-jellyfin";
+              href = "http://192.168.42.200:8081/history.html";
+              widget = {
+                type = "customapi";
+                url = "http://localhost:8081/cleaner.json";
+                mappings = [
+                  {
+                    field = "last_deleted_date";
+                    label = "Last Deleted";
+                  }
+                  {
+                    field = "space_before_trigger_gb";
+                    label = "Marge Go ";
+                  }
+                ];
+              };
             };
           }
         ];

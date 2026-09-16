@@ -12,6 +12,8 @@
     ./services/dashboard.nix
     ./services/infrastructure.nix
     ./services/media.nix
+    ./services/media-cleanup.nix
+    ./services/notifications.nix
     ./services/network.nix
     ./services/utilities.nix
   ];
@@ -72,7 +74,7 @@
   fileSystems."/".options = [ "noatime" ];
 
   fileSystems."/mnt/disk1" = {
-    device = "/dev/disk/by-uuid/5acaa5dd-a82b-4021-baad-629ef73c692c"; 
+    device = "/dev/disk/by-uuid/ad63b57f-116b-436d-98f5-31710d49d418"; 
     fsType = "ext4";
     options = [ 
       "users"     
@@ -136,6 +138,7 @@
     
     interactiveShellInit = ''
       export HISTCONTROL=ignoredups:erasedups
+      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
     '';
   };
 }
