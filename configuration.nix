@@ -13,7 +13,6 @@
     ./services/infrastructure.nix
     ./services/media.nix
     ./services/media-cleanup.nix
-    ./services/notifications.nix
     ./services/network.nix
     ./services/utilities.nix
   ];
@@ -138,7 +137,24 @@
     
     interactiveShellInit = ''
       export HISTCONTROL=ignoredups:erasedups
-      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
     '';
+  };
+
+  # ====================================================================
+  # --- SOPS ---
+  # ====================================================================
+
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+    secrets = {
+      kopia_password = {
+        owner = "root";
+        mode = "0400";
+      };
+    };
   };
 }
