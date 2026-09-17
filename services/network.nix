@@ -14,9 +14,6 @@
     prefixLength = 24;
   }];
 
-  # networking.useDHCP = false;
-  # networking.interfaces.eno1.useDHCP = false;
-
   # Optimize performances for streaming,VPN and server access.
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="net", NAME=="eno1", RUN+="${pkgs.ethtool}/bin/ethtool -K eno1 rx-udp-gro-forwarding on rx-gro-list off"
@@ -38,8 +35,8 @@
   };
 
   networking.defaultGateway = "192.168.42.1";
-  networking.nameservers = [ "127.0.0.1" ];
-  networking.networkmanager.dns = "none";
+  networking.nameservers = [ "1.1.1.1" ];
+  # networking.networkmanager.dns = "none";
 
   
   # --- Firewall ---
@@ -84,7 +81,7 @@
     settings = {
       server_url = "https://vpn.bhr-sys.com"; 
       dns = {
-        nameservers.global = [ "192.168.42.200" ];
+        nameservers.global = [ "192.168.42.1" ];
         base_domain = "headscale.net"; # Suffix for devices name MagicDNS
         magic_dns = true; # Use devices name as "DNS"
       };

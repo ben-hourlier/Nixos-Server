@@ -8,6 +8,8 @@
   imports = [ 
     ./hardware-configuration.nix
 
+    ./secrets/sops.nix
+
     ./services/backup.nix
     ./services/dashboard.nix
     ./services/infrastructure.nix
@@ -141,22 +143,5 @@
       export HISTCONTROL=ignoredups:erasedups
     '';
   };
-
-  # ====================================================================
-  # --- SOPS ---
-  # ====================================================================
-
-  sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-
-    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-
-    secrets = {
-      kopia_password = {
-        owner = "root";
-        mode = "0400";
-      };
-    };
-  };
+  
 }

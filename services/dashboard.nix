@@ -29,17 +29,17 @@
     services = [
       {
         "Infrastructure" = [
-          {
-            "Scrutiny" = {
-              icon = "scrutiny.svg";
-              href = "http://192.168.42.200:8085";
-              ping = "http://127.0.0.1:8085";
-              widget = {
-                type = "scrutiny";
-                url = "http://192.168.42.200:8085";
-              };
-            };
-          }
+          # {
+          #   "Scrutiny" = {
+          #     icon = "scrutiny.svg";
+          #     href = "http://192.168.42.200:8085";
+          #     ping = "http://127.0.0.1:8085";
+          #     widget = {
+          #       type = "scrutiny";
+          #       url = "http://192.168.42.200:8085";
+          #     };
+          #   };
+          # }
           # {
           #   "AdGuard Home" = {
           #     icon = "adguard-home.svg";
@@ -59,24 +59,29 @@
               href = "https://secure.backblaze.com/b2_buckets.htm";
               widget = {
                 type = "customapi";
-                url = "http://localhost:8081/kopia-stats.json";
+                url = "http://localhost:8081/backup-status.json";
                 mappings = [
                   {
-                    field = "status";
-                    label = "Status";
+                    field = "github_sync";
+                    label = "Github Sync";
                   }
                   {
-                    field = "last_run";
-                    label = "Last Run";
+                    field = "databases_dump";
+                    label = "Databases Dump";
+                  }
+                  {
+                    field = "kopia_snapshot";
+                    label = "Kopia Snapshot";
+                  }
+                  {
+                    field = "sync_cloud";
+                    label = "Sync Cloud";
                   }
                   {
                     field = "size";
-                    label = "Backup Size";
+                    label = "Size";
                   }
-                  {
-                    field = "duration";
-                    label = "Duration";
-                  }
+                  
                 ];
               };
             };
