@@ -1,5 +1,6 @@
 keys:
   - &desktop1 age1ktwy2qlt00fhzlrrgavfn6xezt63eytpmu3jaz5tqvg50dy0t4asgf9qlf
+  - &laptop1 age14rx5k466yvenwu2kkcx07avjul00d0tcy0xxe3dlr2rs832mu54smtl07s
   - &server1 age1t7xhyqgf2zwgg09jdsceczwqmufwftv26vsgtc3mtzhh6l4jzerq7pjmd6
 
 creation_rules:
