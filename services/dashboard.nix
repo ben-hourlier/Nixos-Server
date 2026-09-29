@@ -200,15 +200,10 @@
           {
             "Media Cleaner" = {
               icon = "si-jellyfin";
-              href = "http://192.168.42.200:8081/history.html";
               widget = {
                 type = "customapi";
                 url = "http://localhost:8081/cleaner.json";
                 mappings = [
-                  {
-                    field = "last_deleted_date";
-                    label = "Last Deleted";
-                  }
                   {
                     field = "space_before_trigger_gb";
                     label = "Marge Go ";
