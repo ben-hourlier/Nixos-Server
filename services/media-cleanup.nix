@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 let
-  htmlPage = ../history.html;
-
   mediaCleanupScript = pkgs.writeShellScriptBin "media-cleanup" ''
     #!/usr/bin/env bash
     set -euo pipefail
@@ -15,8 +13,6 @@ let
     SONARR_URL="http://localhost:8989"
     SONARR_API="SONARR_API"
 
-    JSON_FILE="/var/www/homepage/cleaner.json"
-
     get_free_space_gb() {
         df -BG "$MOUNT_POINT" | awk 'NR==2 {print $4}' | tr -d 'G'
     }
@@ -24,33 +20,6 @@ let
     get_free_space_mb() {
         df -BM "$MOUNT_POINT" | awk 'NR==2 {print $4}' | tr -d 'M'
     }
-
-    update_json() {
-        local deleted_title="$1"
-        local current_free
-        current_free=$(get_free_space_gb)
-        local space_before=$(( current_free - THRESHOLD_GB ))
-        local current_time
-        current_time=$(date +"%Y-%m-%d %H:%M")
-
-        if [ ! -f "$JSON_FILE" ]; then
-            mkdir -p "$(dirname "$JSON_FILE")"
-            echo '{"last_deleted_date": "Aucun", "space_before_trigger_gb": 0, "deleted_media": []}' > "$JSON_FILE"
-            chown caddy:caddy "$JSON_FILE" || true
-        fi
-
-        if [ -n "$deleted_title" ]; then
-            jq --arg name "$deleted_title" \
-               --arg date "$current_time" \
-               --argjson space "$space_before" \
-               '.last_deleted_date = $date | .space_before_trigger_gb = $space | .deleted_media = [{name: $name, deleted_at: $date}] + .deleted_media' \
-               "$JSON_FILE" > "$JSON_FILE.tmp" && mv "$JSON_FILE.tmp" "$JSON_FILE"
-        else
-            jq --argjson space "$space_before" '.space_before_trigger_gb = $space' "$JSON_FILE" > "$JSON_FILE.tmp" && mv "$JSON_FILE.tmp" "$JSON_FILE"
-        fi
-    }
-
-    update_json ""
 
     current_space_gb=$(get_free_space_gb)
     echo "Espace libre actuel : ''${current_space_gb} Go (Seuil cible : ''${THRESHOLD_GB} Go)"
@@ -115,7 +84,6 @@ in
 
   systemd.tmpfiles.rules = [
     "d /var/www/homepage 0755 caddy caddy -"
-    "L+ /var/www/homepage/history.html - - - - ${htmlPage}"
   ];
 
   systemd.services.media-cleanup = {
