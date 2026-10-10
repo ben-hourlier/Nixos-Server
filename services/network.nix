@@ -107,6 +107,10 @@
         extraConfig = "reverse_proxy localhost:8080";
       };
 
+      "focus.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8765";
+      };
+
       "immich.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:2283";
       };

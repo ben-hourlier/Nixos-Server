@@ -75,4 +75,11 @@
     };
   };
 
+  services.focus = {
+    enable = true;
+    port = 8765;
+    host = "127.0.0.1";
+    dataDir = "/var/lib/focus";
+    };
+
 }
