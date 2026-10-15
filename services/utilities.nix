@@ -77,9 +77,40 @@
 
   services.focus = {
     enable = true;
-    port = 8765;
-    host = "127.0.0.1";
-    dataDir = "/var/lib/focus";
+    instances = {
+      ben = {
+        port = 8765;
+        dataDir = "/var/lib/focus"; 
+      };
+
+      nina = {
+        port = 8766;
+      };
+
+      raph = {
+        port = 8767;
+      };
     };
+  };
+
+  services.get-done = {
+    enable = true;
+    instances = {
+      perso = {
+        port = 9870;
+        host = "127.0.0.1";
+      };
+
+      nina = {
+        port = 9871;
+        host = "127.0.0.1";
+      };
+
+      oscar = {
+        port = 9872;
+        host = "127.0.0.1";
+      };
+    };
+  };
 
 }

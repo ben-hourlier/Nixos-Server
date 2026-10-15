@@ -111,16 +111,32 @@
         extraConfig = "reverse_proxy localhost:8765";
       };
 
+      "nina.focus.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8766";
+      };
+
+      "raph.focus.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8767";
+      };
+
+      "getdone.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9870";
+      };
+
+      "nina.getdone.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9871";
+      };
+
+      "oscar.getdone.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9872";
+      };
+
       "immich.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:2283";
       };
 
       "jellyfin.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8096";
-      };
-
-      "ntfy.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:2586";
       };
 
       "paperless.bhr-sys.com" = {
@@ -150,25 +166,6 @@
           header Access-Control-Allow-Origin "*"
         '';
       };
-
-      # Test for maintenance page
-      "test.bhr-sys.com" = {
-        extraConfig = ''
-          root * /var/www/maintenance
-          error 503
-
-          handle_errors {
-            rewrite * /maintenance.html
-            file_server
-          }
-        '';
-      };
     };
   };
-
-  # Dans ta configuration NixOS (ex: server-configuration.nix)
-  systemd.tmpfiles.rules = [
-    "d /var/www/maintenance 0755 caddy caddy -"
-    "f /var/www/maintenance/maintenance.html 0644 caddy caddy - <html><body><h1>Serveur en maintenance</h1><p>Nous revenons vite !</p></body></html>"
-  ];
 }

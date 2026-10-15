@@ -56,7 +56,7 @@ let
       NOW=$(date +"%d/%m - %H:%M")
 
       STATUS="$NOW ❌"
-      SIZE="Unkown"
+      SIZE="Unknown"
       if [ "$RESULT" = "success" ]; then
         STATUS="$NOW ✅"
         if [ "$STEP" = "kopia_snapshot" ] && [ -d /mnt/disk1/backups/kopia ]; then
