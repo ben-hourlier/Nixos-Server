@@ -8,18 +8,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     focus = {
-      url = "github:ben-hourlier/Focus";
+      url = "github:bhr-tools/Focus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    getDone = {
+      url = "github:bhr-tools/GetDone";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
         sops-nix.nixosModules.sops
         focus.nixosModules.default
+        getDone.nixosModules.default
       ];
     };
   };

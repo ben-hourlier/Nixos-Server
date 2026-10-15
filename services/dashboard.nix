@@ -30,17 +30,6 @@
       {
         "Infrastructure" = [
           # {
-          #   "Scrutiny" = {
-          #     icon = "scrutiny.svg";
-          #     href = "http://192.168.42.200:8085";
-          #     ping = "http://127.0.0.1:8085";
-          #     widget = {
-          #       type = "scrutiny";
-          #       url = "http://192.168.42.200:8085";
-          #     };
-          #   };
-          # }
-          # {
           #   "AdGuard Home" = {
           #     icon = "adguard-home.svg";
           #     href = "http://192.168.42.200:3000";
@@ -61,10 +50,10 @@
                 type = "customapi";
                 url = "http://localhost:8081/backup-status.json";
                 mappings = [
-                  {
-                    field = "github_sync";
-                    label = "Github Sync";
-                  }
+                  # {
+                  #   field = "github_sync";
+                  #   label = "Github Sync";
+                  # }
                   {
                     field = "databases_dump";
                     label = "Databases Dump";
@@ -200,13 +189,14 @@
           {
             "Media Cleaner" = {
               icon = "si-jellyfin";
+              href = "http://192.168.42.200:8081/cleaner.log";
               widget = {
                 type = "customapi";
                 url = "http://localhost:8081/cleaner.json";
                 mappings = [
                   {
                     field = "space_before_trigger_gb";
-                    label = "Marge Go ";
+                    label = "Margin GB";
                   }
                 ];
               };
