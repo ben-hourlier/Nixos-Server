@@ -65,11 +65,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792096738,
-        "narHash": "sha256-ajb8FYrDy+EDdzSpOuQSBnDKcNt9pEfeZL5llaQp15s=",
+        "lastModified": 1792141774,
+        "narHash": "sha256-y6t7O/KgdLKku3QaOmtPfQ322beMp00Tv5DsTF4bcc8=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "9827ca2027aefb04216fdf28d2e586e872484703",
+        "rev": "591977e113204740b0205a5383e75382da63a37d",
         "type": "github"
       },
       "original": {
