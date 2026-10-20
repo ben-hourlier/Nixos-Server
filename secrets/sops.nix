@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   sops = {
@@ -16,10 +16,24 @@
         owner = "root";
         mode = "0400";
       };
-      media_cleanup = {
+      radarr = {
+        owner = "root";
+        mode = "0400";
+      };
+      sonarr = {
         owner = "root";
         mode = "0400";
       };
     };
+
+    templates."arr-env" = {
+      content = ''
+        HOMEPAGE_VAR_SONARR_API=${config.sops.placeholder.sonarr}
+        HOMEPAGE_VAR_RADARR_API=${config.sops.placeholder.radarr}
+      '';
+    };
   };
+
+  systemd.services.homepage-dashboard.serviceConfig.EnvironmentFile = 
+    config.sops.templates."arr-env".path;
 }
