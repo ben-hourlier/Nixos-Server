@@ -90,10 +90,12 @@
   '';
 
   # Limitation of the logs to limit writing
-  services.journald.extraConfig = ''
-    SystemMaxUse=500M
-    MaxRetentionSec=1month
-  '';
+  services.journald.settings = {
+    Journal = {
+      SystemMaxUse = "500M";
+      MaxRetentionSec = "1month";
+    };
+  };
 
 
   # ====================================================================

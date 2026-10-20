@@ -128,12 +128,12 @@
           {
             "Radarr" = {
               icon = "radarr.svg";
-              href = "http://192.168.42.200:7878";
+              href = "https://radarr.bhr-sys.com";
               ping = "http://127.0.0.1:7878";
               widget = {
                 type = "radarr";
                 url = "http://127.0.0.1:7878";
-                key = "RADARR_API";
+                key = "{{HOMEPAGE_VAR_RADARR_API}}";
                 fields = [ "movies" "wanted" "queued" ];
               };
             };
@@ -141,12 +141,12 @@
           {
             "Sonarr" = {
               icon = "sonarr.svg";
-              href = "http://192.168.42.200:8989"; 
+              href = "https://sonarr.bhr-sys.com"; 
               ping = "http://127.0.0.1:8989"; 
               widget = {
                 type = "sonarr";
                 url = "http://127.0.0.1:8989";
-                key = "SONARR_API";
+                key = "{{HOMEPAGE_VAR_SONARR_API}}";
                 fields = [ "series" "wanted" "queued" ];
               };
             };

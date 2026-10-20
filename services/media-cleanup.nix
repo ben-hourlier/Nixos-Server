@@ -9,9 +9,9 @@ let
     THRESHOLD_GB=80
     MOUNT_POINT="/"
     RADARR_URL="http://localhost:7878"
-    RADARR_API="''${RADARR_API:?RADARR_API variable must be set}"
+    RADARR_API="''${HOMEPAGE_VAR_RADARR_API:?RADARR_API variable must be set}"
     SONARR_URL="http://localhost:8989"
-    SONARR_API="''${SONARR_API:?SONARR_API variable must be set}"
+    SONARR_API="''${HOMEPAGE_VAR_SONARR_API:?SONARR_API variable must be set}"
 
     LOG_FILE="/var/www/homepage/cleaner.log"
     STATUS_JSON="/var/www/homepage/cleaner.json"
@@ -127,7 +127,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${mediaCleanupScript}/bin/media-cleanup";
-      EnvironmentFile = config.sops.secrets.media_cleanup.path;
+      EnvironmentFile = config.sops.templates."arr-env".path;
       User = "root";
     };
   };

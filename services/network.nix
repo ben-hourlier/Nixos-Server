@@ -143,8 +143,16 @@
         extraConfig = "reverse_proxy localhost:28981";
       };
 
+      "radarr.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:7878";
+      };
+
       "seerr.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:5055";
+      };
+
+      "sonarr.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8989";
       };
 
       "vault.bhr-sys.com" = {
