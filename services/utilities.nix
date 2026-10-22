@@ -80,7 +80,6 @@
     instances = {
       ben = {
         port = 8765;
-        dataDir = "/var/lib/focus"; 
       };
 
       nina = {
@@ -93,10 +92,10 @@
     };
   };
 
-  services.get-done = {
+  services.getdone = {
     enable = true;
     instances = {
-      perso = {
+      ben = {
         port = 9870;
         host = "127.0.0.1";
       };
