@@ -119,6 +119,10 @@
         extraConfig = "reverse_proxy localhost:8767";
       };
 
+      "kilian.focus.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:8768";
+      };
+
       "getdone.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:9870";
       };
@@ -130,6 +134,11 @@
       "oscar.getdone.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:9872";
       };
+
+      "kilian.getdone.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9873";
+      };
+
 
       "immich.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:2283";
