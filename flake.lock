@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792674718,
-        "narHash": "sha256-QbIQlIN0cxJRRpS6cL9Yb92ga7DOQk6oJJLcsUgQeEo=",
+        "lastModified": 1792926877,
+        "narHash": "sha256-xt/blpZ39/q22MfIs9TeksatWAAj+4PTzoJg+Wu5wBY=",
         "owner": "bhr-tools",
         "repo": "Focus",
-        "rev": "ecb76f49748c6e23864a2d130f450485cff40525",
+        "rev": "420f90f31422ab9900dcc2d55e131c46fbf57576",
         "type": "github"
       },
       "original": {
@@ -65,11 +65,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792676040,
-        "narHash": "sha256-Mpkw1W4v3Ec5BsoiCAcd2+X5tt0f6fORtcvyui7nN7k=",
+        "lastModified": 1792844017,
+        "narHash": "sha256-p/Olxy2XoGVl7pDJOBT3aPioFBrqEJSE+1V3+YsJY1o=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "23209598cfdf6d0b87061a536b6c1bca00473ec3",
+        "rev": "e057b61c5ca19d8c39e2908fd5a7c11f490ec0d9",
         "type": "github"
       },
       "original": {
