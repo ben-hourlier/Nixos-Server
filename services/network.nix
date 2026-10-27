@@ -155,6 +155,10 @@
         extraConfig = "reverse_proxy localhost:8096";
       };
 
+      "mail.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9890";
+      };
+
       "paperless.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:28981";
       };

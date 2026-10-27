@@ -80,6 +80,27 @@
     instances.ben.port = 9880; 
   };
 
+  services.webmail = {
+    enable = true;
+    instances.ben = {
+      port = 9890;
+      accountsFile = config.sops.templates."webmail-accounts.json".path;
+      accounts = {
+        perso = { name = "Perso"; address = config.sops.placeholder.mail-perso-address; realName = "Ben";
+          passwordFile = config.sops.secrets.mail-perso.path;
+          imap.host = "imap.gmail.com"; smtp.host = "smtp.gmail.com"; };
+        aen7 = { name = "AEN7"; address = config.sops.placeholder.mail-aen7-address; realName = "Benjamin Hourlier";
+          passwordFile = config.sops.secrets.mail-aen7.path;
+          imap.host = "imap.gmail.com"; smtp.host = "smtp.gmail.com"; };
+        inp = { name = "INP"; address = config.sops.placeholder.mail-inp-address; realName = "Benjamin Hourlier";
+          passwordFile = config.sops.secrets.mail-inp.path;
+          imap.host = "partage.toulouse-inp.fr";
+          smtp = { host = "partage.toulouse-inp.fr"; port = 587; security = "starttls"; };
+          folders.archive = "Archive"; };
+      };
+    };
+  };
+
   services.focus = {
     enable = true;
     instances = {

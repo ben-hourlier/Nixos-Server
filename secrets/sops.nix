@@ -24,6 +24,36 @@
         owner = "root";
         mode = "0400";
       };
+      mail-perso = {
+        owner = "root";
+        mode = "0400";
+      };
+      mail-aen7 = {
+        owner = "root";
+        mode = "0400";
+      };
+      mail-inp = {
+        owner = "root";
+        mode = "0400";
+      };
+      mail-perso-address = {
+        owner = "root";
+        mode = "0400";
+      };
+      mail-aen7-address = {
+        owner = "root";
+        mode = "0400";
+      };
+      mail-inp-address = {
+        owner = "root";
+        mode = "0400";
+      };
+    };
+
+    # Webmail accounts with the real addresses, kept out of the store and of the repo.
+    templates."webmail-accounts.json" = {
+      content = config.services.webmail.instances.ben.accountsJSON;
+      restartUnits = [ "webmail-ben.service" ];
     };
 
     templates."arr-env" = {
