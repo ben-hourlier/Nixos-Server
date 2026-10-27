@@ -143,6 +143,9 @@
         extraConfig = "reverse_proxy localhost:9873";
       };
 
+      "vic.getdone.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9874";
+      };
 
       "immich.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:2283";
