@@ -15,9 +15,13 @@
       url = "github:bhr-tools/GetDone";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    calendar = {
+      url = "github:bhr-tools/Calendar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -25,6 +29,7 @@
         sops-nix.nixosModules.sops
         focus.nixosModules.default
         getDone.nixosModules.default
+        calendar.nixosModules.default
       ];
     };
   };

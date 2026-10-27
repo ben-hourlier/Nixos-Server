@@ -75,6 +75,11 @@
     };
   };
 
+  services.calendar = { 
+    enable = true; 
+    instances.ben.port = 9880; 
+  };
+
   services.focus = {
     enable = true;
     instances = {
