@@ -103,6 +103,10 @@
         extraConfig = "reverse_proxy localhost:5006";
       };
 
+      "calendar.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9880";
+      };
+
       "files.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8080";
       };
