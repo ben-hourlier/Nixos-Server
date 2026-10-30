@@ -16,6 +16,14 @@
         owner = "root";
         mode = "0400";
       };
+      filebrowser = {
+        owner = "root";
+        mode = "0400";
+      };
+      caddy-env = {
+        owner = "root";
+        mode = "0400";
+      };
       radarr = {
         owner = "root";
         mode = "0400";

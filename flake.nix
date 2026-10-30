@@ -27,9 +27,13 @@
       url = "github:bhr-tools/Inventory";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dictee = {
+      url = "github:bhr-tools/Dictee";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -40,6 +44,7 @@
         calendar.nixosModules.default
         mail.nixosModules.default
         inventory.nixosModules.default
+        dictee.nixosModules.default
       ];
     };
   };
