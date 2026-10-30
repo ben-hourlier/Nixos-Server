@@ -40,6 +40,15 @@ let
           sqlite3 "$db_path" ".backup '$target_dir/$(basename "$rel_path")'"
         done
       fi
+
+      # Self-hosted apps (GetDone, Focus, Calendar, Inventory): one SQLite
+      # database per instance directory, so new instances are picked up as is.
+      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db; do
+        [ -f "$db" ] || continue
+        app_dir="$(basename "$(dirname "$db")")"
+        mkdir -p "${dumpDir}/apps/$app_dir"
+        sqlite3 "$db" ".backup '${dumpDir}/apps/$app_dir/$(basename "$db")'"
+      done
     '';
   };
 
@@ -158,8 +167,15 @@ in
 
       kopia repository connect filesystem --path /mnt/disk1/backups/kopia
 
+      # Files attached in Inventory (invoices, manuals); their database is in the dumps.
+      attachments=()
+      for dir in /var/lib/inventory-*/attachments; do
+        if [ -d "$dir" ]; then attachments+=("$dir"); fi
+      done
+
       kopia snapshot create \
         "${dumpDir}" \
+        "''${attachments[@]}" \
         /var/lib/actual \
         /var/lib/immich \
         /var/lib/paperless \
