@@ -143,11 +143,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793368260,
-        "narHash": "sha256-VQT5Sv1CBBQaoJwzoKbdCLvTgWI/p4jxxhy25R01SB8=",
+        "lastModified": 1793369434,
+        "narHash": "sha256-R4Ljy2uV7NUiPeOwgQ7CjAvSW2ad1q+mQFAp749cJaM=",
         "owner": "bhr-tools",
         "repo": "Inventory",
-        "rev": "6f3951af8c5fbf2f42cd95811620727e22adbb0d",
+        "rev": "aaabea8238f15f297374d8d4a33cb277f10f1b89",
         "type": "github"
       },
       "original": {
