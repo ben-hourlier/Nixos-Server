@@ -47,14 +47,31 @@
     };
   };
 
-  systemd.services.filebrowser = {
-    description = "Web interface for syncthing";
+  systemd.services.filebrowser = let
+    config-file = pkgs.writeText "filebrowser-quantum.yaml" ''
+      server:
+        port: 8080
+        database: /var/lib/syncthing/filebrowser-quantum.db
+        cacheDir: /var/cache/filebrowser
+        sources:
+          - path: /var/lib/syncthing/Sync
+            name: Sync
+            config:
+              defaultEnabled: true
+      auth:
+        adminUsername: ben
+    '';
+  in {
+    description = "Web interface for syncthing (FileBrowser Quantum)";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.ffmpeg-headless ]; # video thumbnails and HEIC previews
     serviceConfig = {
-      ExecStart = "${pkgs.filebrowser}/bin/filebrowser -a 0.0.0.0 -p 8080 -r /var/lib/syncthing/Sync -d /var/lib/syncthing/filebrowser.db";
+      ExecStart = "${pkgs.filebrowser-quantum}/bin/filebrowser-quantum -c ${config-file}";
+      EnvironmentFile = config.sops.secrets.filebrowser.path; # FILEBROWSER_ADMIN_PASSWORD=...
+      CacheDirectory = "filebrowser";
       Restart = "always";
-      User = "syncthing"; 
+      User = "syncthing";
     };
   };
 
@@ -155,6 +172,34 @@
         host = "127.0.0.1";
       };
     };
+  };
+
+  # --- Dictée: dictated mp3 -> formatted French text ---
+
+  # whisper.cpp on CPU, local only. Same model as the desktop (small, unquantized).
+  systemd.services.whisper-server = {
+    description = "Whisper.cpp inference server (used by Dictée)";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.whisper-cpp}/bin/whisper-server --model ${pkgs.fetchurl {
+        url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin";
+        hash = "sha256-G+OpsgY4Z7k35k4ux0gzZKeZF+FX+pjF2UtcH//qmHs=";
+      }} --host 127.0.0.1 --port 8178 --threads 4";
+      Restart = "always";
+      RestartSec = 3;
+      DynamicUser = true;
+      PrivateTmp = true;
+      NoNewPrivileges = true;
+      ProtectSystem = "strict";
+      ProtectHome = true;
+    };
+  };
+
+  services.dictee = {
+    enable = true;
+    port = 9910;
+    whisperUrl = "http://127.0.0.1:8178";
   };
 
 }

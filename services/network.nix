@@ -97,6 +97,8 @@
 
   services.caddy = {
     enable = true;
+    # DICTEE_HASH='<bcrypt from `caddy hash-password`>'
+    environmentFile = config.sops.secrets.caddy-env.path;
     virtualHosts = {
 
       "budget.bhr-sys.com" = {
@@ -109,6 +111,18 @@
 
       "files.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8080";
+      };
+
+      "dictee.bhr-sys.com" = {
+        extraConfig = ''
+          request_body {
+            max_size 200MB
+          }
+          basic_auth {
+            dictee {$DICTEE_HASH}
+          }
+          reverse_proxy localhost:9910
+        '';
       };
 
       "focus.bhr-sys.com" = {
