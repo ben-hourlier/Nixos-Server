@@ -23,9 +23,13 @@
       url = "github:bhr-tools/Mail";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inventory = {
+      url = "github:bhr-tools/Inventory";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -35,6 +39,7 @@
         getDone.nixosModules.default
         calendar.nixosModules.default
         mail.nixosModules.default
+        inventory.nixosModules.default
       ];
     };
   };

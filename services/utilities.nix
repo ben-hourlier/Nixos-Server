@@ -80,6 +80,11 @@
     instances.ben.port = 9880; 
   };
 
+  services.inventory = {
+    enable = true;
+    instances.ben.port = 9900;
+  };
+
   services.webmail = {
     enable = true;
     instances.ben = {
