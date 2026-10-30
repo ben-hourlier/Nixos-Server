@@ -151,6 +151,10 @@
         extraConfig = "reverse_proxy localhost:2283";
       };
 
+      "inventory.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9900";
+      };
+
       "jellyfin.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8096";
       };
