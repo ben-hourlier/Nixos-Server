@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793695386,
-        "narHash": "sha256-qRogbKYDG7MjnAzpKXPDJDzuKu5HT6qUg0HdXSehFbQ=",
+        "lastModified": 1793703237,
+        "narHash": "sha256-5DBAU0+sbpv11J6anVgIQN4y6oJ7pGd8oPrEDbkw/9M=",
         "owner": "bhr-tools",
         "repo": "Calendar",
-        "rev": "e6e307dfb6661f6fdca3c9819557520efee465ef",
+        "rev": "664dc6487f51ad9f2df35d02e269cf8abd7bd05d",
         "type": "github"
       },
       "original": {
