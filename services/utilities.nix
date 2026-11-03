@@ -102,6 +102,11 @@
     instances.ben.port = 9900;
   };
 
+  services.meals = {
+    enable = true;
+    instances.ben.port = 9920;
+  };
+
   services.webmail = {
     enable = true;
     instances.ben = {

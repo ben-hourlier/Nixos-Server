@@ -2,10 +2,23 @@
 
 let
   githubRepos = [
-    "git@github.com:jarvis-ed1th/FocusOS.git"
-    "git@github.com:jarvis-ed1th/Digital-Brain.git"
-    "git@github.com:jarvis-ed1th/expense-report-creator.git"
-    "git@github.com:jarvis-ed1th/server1-nixos.git"
+    "git@github.com:ben-hourlier/Benflix3.git"
+    "git@github.com:ben-hourlier/Digital-Brain.git"
+    "git@github.com:ben-hourlier/Drill-Library.git"
+    "git@github.com:ben-hourlier/N7Dev.git"
+    "git@github.com:ben-hourlier/Nixos-Workstations.git"
+    "git@github.com:ben-hourlier/Nixos-Server.git"
+
+    "git@github.com:bhr-tools/Calendar"
+    "git@github.com:bhr-tools/Capture"
+    "git@github.com:bhr-tools/Dicteee"
+    "git@github.com:bhr-tools/Expense-Report-Creator.git"
+    "git@github.com:bhr-tools/Focus"
+    "git@github.com:bhr-tools/GetDone"
+    "git@github.com:bhr-tools/Inventory"
+    "git@github.com:bhr-tools/Mail"
+    "git@github.com:bhr-tools/Meals"
+    "git@github.com:bhr-tools/Workspace-Manager"
   ];
 
   dumpDir = "/mnt/disk1/backups/dumps";
@@ -41,9 +54,9 @@ let
         done
       fi
 
-      # Self-hosted apps (GetDone, Focus, Calendar, Inventory): one SQLite
+      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals): one SQLite
       # database per instance directory, so new instances are picked up as is.
-      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db; do
+      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db; do
         [ -f "$db" ] || continue
         app_dir="$(basename "$(dirname "$db")")"
         mkdir -p "${dumpDir}/apps/$app_dir"
