@@ -169,6 +169,10 @@
         extraConfig = "reverse_proxy localhost:9900";
       };
 
+      "meals.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9920";
+      };
+
       "jellyfin.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:8096";
       };
