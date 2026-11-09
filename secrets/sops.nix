@@ -12,6 +12,10 @@
         owner = "root";
         mode = "0400";
       };
+      assistant-claude = {
+        owner = "root";
+        mode = "0400";
+      };
       porkbun = {
         owner = "root";
         mode = "0400";

@@ -35,9 +35,14 @@
       url = "github:bhr-tools/Meals";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    assistant = {
+      # Private repository: fetched over SSH (the key of whoever rebuilds).
+      url = "git+ssh://git@github.com/bhr-tools/Assistant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, assistant, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -50,6 +55,7 @@
         inventory.nixosModules.default
         dictee.nixosModules.default
         meals.nixosModules.default
+        assistant.nixosModules.default
       ];
     };
   };

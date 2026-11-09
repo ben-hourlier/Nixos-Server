@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, lib, ... }:
 
 {
   services.immich = {
@@ -106,6 +106,26 @@
     enable = true;
     instances.ben.port = 9920;
   };
+
+  services.assistant = {
+    enable = true;
+    instances.ben = {
+      port = 9930;
+      # Repositories mirrored by backup.nix that the app reads as activity
+      # logs (sources of kind mirror): no deploy key needed.
+      mirrors.drill = "/mnt/disk1/backups/github/Drill-Library.git";
+      agents = {
+        enable = true;
+        # CLAUDE_CODE_OAUTH_TOKEN=… from `claude setup-token` (Pro subscription).
+        environmentFile = config.sops.secrets.assistant-claude.path;
+        # The mirror kept by backup.nix; the agents get a read-only copy.
+        vaultMirror = "/mnt/disk1/backups/github/Digital-Brain.git";
+      };
+    };
+  };
+
+  # Claude Code is unfree: allow this package only.
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
 
   services.webmail = {
     enable = true;

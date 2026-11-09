@@ -11,13 +11,14 @@ let
 
     "git@github.com:bhr-tools/Calendar"
     "git@github.com:bhr-tools/Capture"
-    "git@github.com:bhr-tools/Dicteee"
+    "git@github.com:bhr-tools/Dictee"
     "git@github.com:bhr-tools/Expense-Report-Creator.git"
     "git@github.com:bhr-tools/Focus"
     "git@github.com:bhr-tools/GetDone"
     "git@github.com:bhr-tools/Inventory"
     "git@github.com:bhr-tools/Mail"
     "git@github.com:bhr-tools/Meals"
+    "git@github.com:bhr-tools/Assistant"
     "git@github.com:bhr-tools/Workspace-Manager"
   ];
 
@@ -61,6 +62,14 @@ let
         app_dir="$(basename "$(dirname "$db")")"
         mkdir -p "${dumpDir}/apps/$app_dir"
         sqlite3 "$db" ".backup '${dumpDir}/apps/$app_dir/$(basename "$db")'"
+      done
+
+      # Assistant (beta): one JSON state file per instance.
+      for state in /var/lib/assistant-*/state.json; do
+        [ -f "$state" ] || continue
+        app_dir="$(basename "$(dirname "$state")")"
+        mkdir -p "${dumpDir}/apps/$app_dir"
+        cp "$state" "${dumpDir}/apps/$app_dir/state.json"
       done
     '';
   };
@@ -129,14 +138,21 @@ in
       mkdir -p /mnt/disk1/backups/github
       cd /mnt/disk1/backups/github
       
+      # One failing repository must not stop the others; the service still
+      # fails at the end so the status shows it.
+      failed=""
       ${pkgs.lib.concatMapStringsSep "\n" (repo: ''
         repo_name=$(basename "${repo}" .git)
         if [ -d "$repo_name.git" ]; then
-          git -C "$repo_name.git" remote update
+          git -C "$repo_name.git" remote update || failed="$failed $repo_name"
         else
-          git clone --mirror "${repo}" "$repo_name.git"
+          git clone --mirror "${repo}" "$repo_name.git" || failed="$failed $repo_name"
         fi
       '') githubRepos}
+      if [ -n "$failed" ]; then
+        echo "failed:$failed" >&2
+        exit 1
+      fi
     '';
   };
 
