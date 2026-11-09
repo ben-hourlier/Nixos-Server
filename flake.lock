@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "calendar": {
+    "assistant": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -8,11 +8,32 @@
         ]
       },
       "locked": {
-        "lastModified": 1793703237,
-        "narHash": "sha256-5DBAU0+sbpv11J6anVgIQN4y6oJ7pGd8oPrEDbkw/9M=",
+        "lastModified": 1794231901,
+        "narHash": "sha256-ZO0lZRgACo2tDlWBmVqUspJK6z81OZr0RRsq8Nnjt0A=",
+        "ref": "refs/heads/main",
+        "rev": "d82d03d0d2cd25d0b3a198cdc118ff5b4f450730",
+        "revCount": 21,
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/Assistant"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/Assistant"
+      }
+    },
+    "calendar": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793801779,
+        "narHash": "sha256-l2QbLXCC1qUQKlYfFIV5R+9JGbWMcIEcgxYNi9uk/FA=",
         "owner": "bhr-tools",
         "repo": "Calendar",
-        "rev": "664dc6487f51ad9f2df35d02e269cf8abd7bd05d",
+        "rev": "583bb5b091e989fa44310c626286859fc738b0c0",
         "type": "github"
       },
       "original": {
@@ -23,7 +44,7 @@
     },
     "dictee": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -83,11 +104,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
         "type": "github"
       },
       "original": {
@@ -137,6 +158,24 @@
         "systems": "systems_6"
       },
       "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_7": {
+      "inputs": {
+        "systems": "systems_7"
+      },
+      "locked": {
         "lastModified": 1791914995,
         "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
         "owner": "numtide",
@@ -152,7 +191,7 @@
     },
     "focus": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -173,7 +212,7 @@
     },
     "getDone": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -194,7 +233,7 @@
     },
     "inventory": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": "flake-utils_6",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -220,11 +259,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793207193,
-        "narHash": "sha256-VXlH4pnEd1z2LXBbo8IN5XTqauireLdmIlblDEEyNIA=",
+        "lastModified": 1793800298,
+        "narHash": "sha256-9Cx6kdLj1wvSTG/ddAdxZp8DdeddKvJc6k4CpprD0yo=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "a3b950736316e47b9febd21dc818384d5464bfbd",
+        "rev": "5b77f7f603cb646e04dab056d0f50ee6b096195f",
         "type": "github"
       },
       "original": {
@@ -235,7 +274,7 @@
     },
     "meals": {
       "inputs": {
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_7",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -272,6 +311,7 @@
     },
     "root": {
       "inputs": {
+        "assistant": "assistant",
         "calendar": "calendar",
         "dictee": "dictee",
         "focus": "focus",
@@ -379,6 +419,21 @@
       }
     },
     "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_7": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
