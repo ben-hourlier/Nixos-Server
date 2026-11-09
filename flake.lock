@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794231901,
-        "narHash": "sha256-ZO0lZRgACo2tDlWBmVqUspJK6z81OZr0RRsq8Nnjt0A=",
+        "lastModified": 1794244623,
+        "narHash": "sha256-9xTCMCIV58VE+updf390JFQEC1Tk9B+dG3xi9iFNR20=",
         "ref": "refs/heads/main",
-        "rev": "d82d03d0d2cd25d0b3a198cdc118ff5b4f450730",
-        "revCount": 21,
+        "rev": "84eccb82428f11d2e3de86c63bccfd5bb228e2d3",
+        "revCount": 26,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/Assistant"
       },
