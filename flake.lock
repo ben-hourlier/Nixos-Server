@@ -8,6 +8,27 @@
         ]
       },
       "locked": {
+        "lastModified": 1794231901,
+        "narHash": "sha256-ZO0lZRgACo2tDlWBmVqUspJK6z81OZr0RRsq8Nnjt0A=",
+        "ref": "refs/heads/main",
+        "rev": "d82d03d0d2cd25d0b3a198cdc118ff5b4f450730",
+        "revCount": 21,
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/Assistant"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/Assistant"
+      }
+    },
+    "calendar": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
         "lastModified": 1793801779,
         "narHash": "sha256-l2QbLXCC1qUQKlYfFIV5R+9JGbWMcIEcgxYNi9uk/FA=",
         "owner": "bhr-tools",
