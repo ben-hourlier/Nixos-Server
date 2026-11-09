@@ -97,6 +97,29 @@
     };
   };
 
+    # --- File Systems & Storage ---
+
+  # Enables zRAM swap, which creates a compressed swap device directly in RAM.
+  zramSwap = {
+    enable = true;
+    # Sets the maximum compression ratio or limit. 
+    # By default, NixOS uses a sensible percentage of total RAM.
+    memoryPercent = 50; 
+    # Highest priority for using zram instead of swapfile if possible.
+    priority = 100;
+  };
+
+  # Configures a dedicated swap file to prevent Out-Of-Memory (OOM) errors 
+  # during heavy system usage. 
+  # Unlike a physical partition, a swap file can be easily adjusted or removed later.
+  swapDevices = [ {
+    device = "/var/lib/swapfile";
+    # Allocates 8GiB of swap space. This is a safe value for most systems 
+    # to handle heavy multitasking comfortably.
+    size = 8 * 1024; 
+  } ];
+
+
 
   # ====================================================================
   # --- User & Programs ---
