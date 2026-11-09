@@ -8,27 +8,6 @@
         ]
       },
       "locked": {
-        "lastModified": 1794231901,
-        "narHash": "sha256-ZO0lZRgACo2tDlWBmVqUspJK6z81OZr0RRsq8Nnjt0A=",
-        "ref": "refs/heads/main",
-        "rev": "d82d03d0d2cd25d0b3a198cdc118ff5b4f450730",
-        "revCount": 21,
-        "type": "git",
-        "url": "ssh://git@github.com/bhr-tools/Assistant"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/bhr-tools/Assistant"
-      }
-    },
-    "calendar": {
-      "inputs": {
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
         "lastModified": 1793801779,
         "narHash": "sha256-l2QbLXCC1qUQKlYfFIV5R+9JGbWMcIEcgxYNi9uk/FA=",
         "owner": "bhr-tools",
@@ -197,11 +176,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793113953,
-        "narHash": "sha256-fFCVGjOYGKe+zF2XKhD6poR5AVuJmIkPA8Ka1uBlqiY=",
+        "lastModified": 1793898136,
+        "narHash": "sha256-0m3rxGgXBFOZITkCpAG39Mgv+P4tX+/mhAZ/fzQYWew=",
         "owner": "bhr-tools",
         "repo": "Focus",
-        "rev": "4d4ef9876c7249f259f1b0ee9fce53d4dc616b92",
+        "rev": "74709613ed51644ecbc74f020763d7a3e463d52d",
         "type": "github"
       },
       "original": {
@@ -259,11 +238,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793800298,
-        "narHash": "sha256-9Cx6kdLj1wvSTG/ddAdxZp8DdeddKvJc6k4CpprD0yo=",
+        "lastModified": 1793879744,
+        "narHash": "sha256-GSokjJhYtUyuLt0KduJEgPcrgOzoZ86Lk7nTDFqsX70=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "5b77f7f603cb646e04dab056d0f50ee6b096195f",
+        "rev": "564218c6e959077521a58529d902280b88a5f914",
         "type": "github"
       },
       "original": {
@@ -280,11 +259,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793617939,
-        "narHash": "sha256-JBvmwxw5mpP8n7V1cE15o+6UTluadOIR5JWZ1yx0W2U=",
+        "lastModified": 1793739238,
+        "narHash": "sha256-AEfAqJUIFKGzvmJQoYwbc9k2qDki04r4oPGiwUBj/uw=",
         "owner": "bhr-tools",
         "repo": "Meals",
-        "rev": "db96fa53ed30ee19d2a0bef4670a77a7bd8393ca",
+        "rev": "d8ccbec1a3a05dcac0e81e29e99947d660cf33c0",
         "type": "github"
       },
       "original": {
@@ -295,11 +274,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1792502884,
-        "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
+        "lastModified": 1793726008,
+        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
+        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
         "type": "github"
       },
       "original": {
@@ -330,11 +309,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792056300,
-        "narHash": "sha256-YU1LjDe1o2Ymg5zEiCHbmMXLkDCtxHQRiVqZ3nC5GGk=",
+        "lastModified": 1793657466,
+        "narHash": "sha256-GoOvpdsjO5hqZuO6T6ok9u6sJEjO0iPli2zRr9oNUNw=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "44931708c62937c2b1bf7953902989fa5bb9ee1b",
+        "rev": "b18e01ce148eb3efff5de2f2d3181ca53b2b2a54",
         "type": "github"
       },
       "original": {
