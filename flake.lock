@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794244623,
-        "narHash": "sha256-9xTCMCIV58VE+updf390JFQEC1Tk9B+dG3xi9iFNR20=",
+        "lastModified": 1794263219,
+        "narHash": "sha256-UxirriCkipqg/lHsLSauSbgNOwgCfcuQHiu/dHyF7L8=",
         "ref": "refs/heads/main",
-        "rev": "84eccb82428f11d2e3de86c63bccfd5bb228e2d3",
-        "revCount": 26,
+        "rev": "7661d108db21e96b99a7d0fc751a036c1d0d2f4f",
+        "revCount": 32,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/Assistant"
       },
@@ -295,11 +295,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1793726008,
-        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
+        "lastModified": 1794042290,
+        "narHash": "sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
+        "rev": "f4a03c008967841f2a0b3cb7c436fc6fc31671f6",
         "type": "github"
       },
       "original": {
@@ -330,11 +330,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793657466,
-        "narHash": "sha256-GoOvpdsjO5hqZuO6T6ok9u6sJEjO0iPli2zRr9oNUNw=",
+        "lastModified": 1794261845,
+        "narHash": "sha256-Ivif/kuD68yEOKcZZG3zSwNMFUuIgzUgeJuzcHrQy+8=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "b18e01ce148eb3efff5de2f2d3181ca53b2b2a54",
+        "rev": "fe7b4228405aeac2ce7192c2049a6e2bc8637082",
         "type": "github"
       },
       "original": {

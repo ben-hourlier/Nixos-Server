@@ -119,7 +119,7 @@
         # CLAUDE_CODE_OAUTH_TOKEN=… from `claude setup-token` (Pro subscription).
         environmentFile = config.sops.secrets.assistant-claude.path;
         # The mirror kept by backup.nix; the agents get a read-only copy.
-        vaultMirror = "/mnt/disk1/backups/github/Digital-Brain.git";
+        notesMirror = "/mnt/disk1/backups/github/Digital-Brain.git";
       };
     };
   };

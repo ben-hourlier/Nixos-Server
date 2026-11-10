@@ -55,21 +55,13 @@ let
         done
       fi
 
-      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals): one SQLite
-      # database per instance directory, so new instances are picked up as is.
-      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db; do
+      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals, Assistant):
+      # one SQLite database per instance directory, so new instances are picked up as is.
+      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db /var/lib/assistant-*/*.db; do
         [ -f "$db" ] || continue
         app_dir="$(basename "$(dirname "$db")")"
         mkdir -p "${dumpDir}/apps/$app_dir"
         sqlite3 "$db" ".backup '${dumpDir}/apps/$app_dir/$(basename "$db")'"
-      done
-
-      # Assistant (beta): one JSON state file per instance.
-      for state in /var/lib/assistant-*/state.json; do
-        [ -f "$state" ] || continue
-        app_dir="$(basename "$(dirname "$state")")"
-        mkdir -p "${dumpDir}/apps/$app_dir"
-        cp "$state" "${dumpDir}/apps/$app_dir/state.json"
       done
     '';
   };
