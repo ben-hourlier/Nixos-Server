@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794263219,
-        "narHash": "sha256-UxirriCkipqg/lHsLSauSbgNOwgCfcuQHiu/dHyF7L8=",
+        "lastModified": 1794298773,
+        "narHash": "sha256-V8ivKNncflolEp+rTRSqtwC1+KRjAAViQJILPhLPPFg=",
         "ref": "refs/heads/main",
-        "rev": "7661d108db21e96b99a7d0fc751a036c1d0d2f4f",
-        "revCount": 32,
+        "rev": "73ce8cfd679f4f467e540fa0cf501f83eb0f350f",
+        "revCount": 35,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/Assistant"
       },
@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793801779,
-        "narHash": "sha256-l2QbLXCC1qUQKlYfFIV5R+9JGbWMcIEcgxYNi9uk/FA=",
+        "lastModified": 1794301433,
+        "narHash": "sha256-UKYjgFp9Oithn312bhvli5Lv9/ZPraaB3I5St+zm2fY=",
         "owner": "bhr-tools",
         "repo": "Calendar",
-        "rev": "583bb5b091e989fa44310c626286859fc738b0c0",
+        "rev": "9c2a8cbf59658487e6ee27db892ac98b2e6e8b27",
         "type": "github"
       },
       "original": {
@@ -197,11 +197,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793898136,
-        "narHash": "sha256-0m3rxGgXBFOZITkCpAG39Mgv+P4tX+/mhAZ/fzQYWew=",
+        "lastModified": 1794299203,
+        "narHash": "sha256-VZsGenmFN/KMuxhK1ji+JjxXl3H6KTP6TUI26clEPSI=",
         "owner": "bhr-tools",
         "repo": "Focus",
-        "rev": "74709613ed51644ecbc74f020763d7a3e463d52d",
+        "rev": "88d600661c29955d881a7f5405a5613bf219f81b",
         "type": "github"
       },
       "original": {
