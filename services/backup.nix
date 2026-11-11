@@ -188,9 +188,10 @@ in
 
       kopia repository connect filesystem --path /mnt/disk1/backups/kopia
 
-      # Files attached in Inventory (invoices, manuals); their database is in the dumps.
+      # Files attached in Inventory (invoices, manuals) and GetDone (tickets,
+      # photos); their databases are in the dumps.
       attachments=()
-      for dir in /var/lib/inventory-*/attachments; do
+      for dir in /var/lib/inventory-*/attachments /var/lib/getdone-*/attachments; do
         if [ -d "$dir" ]; then attachments+=("$dir"); fi
       done
 
