@@ -111,15 +111,16 @@
     enable = true;
     instances.ben = {
       port = 9930;
-      # Repositories mirrored by backup.nix that the app reads as activity
-      # logs (sources of kind mirror): no deploy key needed.
-      mirrors.drill = "/mnt/disk1/backups/github/Drill-Library.git";
+      # Repositories mirrored by backup.nix that the app reads in place: the
+      # Drill and Obsidian integrations (chosen in Settings → Integrations).
+      mirrors = {
+        drill = "/mnt/disk1/backups/github/Drill-Library.git";
+        notes = "/mnt/disk1/backups/github/Digital-Brain.git";
+      };
       agents = {
         enable = true;
         # CLAUDE_CODE_OAUTH_TOKEN=… from `claude setup-token` (Pro subscription).
         environmentFile = config.sops.secrets.assistant-claude.path;
-        # The mirror kept by backup.nix; the agents get a read-only copy.
-        notesMirror = "/mnt/disk1/backups/github/Digital-Brain.git";
       };
     };
   };
