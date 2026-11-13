@@ -8,6 +8,7 @@ let
     "git@github.com:ben-hourlier/N7Dev.git"
     "git@github.com:ben-hourlier/Nixos-Workstations.git"
     "git@github.com:ben-hourlier/Nixos-Server.git"
+    "git@github.com:ben-hourlier/wip.git"
 
     "git@github.com:bhr-tools/Calendar"
     "git@github.com:bhr-tools/Capture"
@@ -18,7 +19,7 @@ let
     "git@github.com:bhr-tools/Inventory"
     "git@github.com:bhr-tools/Mail"
     "git@github.com:bhr-tools/Meals"
-    "git@github.com:bhr-tools/Assistant"
+    "git@github.com:bhr-tools/Project"
     "git@github.com:bhr-tools/Workspace-Manager"
   ];
 
@@ -55,9 +56,9 @@ let
         done
       fi
 
-      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals, Assistant):
+      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals, Project):
       # one SQLite database per instance directory, so new instances are picked up as is.
-      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db /var/lib/assistant-*/*.db; do
+      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db /var/lib/project-*/*.db; do
         [ -f "$db" ] || continue
         app_dir="$(basename "$(dirname "$db")")"
         mkdir -p "${dumpDir}/apps/$app_dir"

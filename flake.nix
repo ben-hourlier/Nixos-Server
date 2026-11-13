@@ -35,14 +35,20 @@
       url = "github:bhr-tools/Meals";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    assistant = {
+    project = {
       # Private repository: fetched over SSH (the key of whoever rebuilds).
-      url = "git+ssh://git@github.com/bhr-tools/Assistant";
+      url = "git+ssh://git@github.com/bhr-tools/Project";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    wip = {
+      # Personal site (private repository). Only the NixOS module and node_modules come from
+      # here: the server fetches and builds main itself (services.wip).
+      url = "git+ssh://git@github.com/ben-hourlier/wip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, assistant, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, project, wip, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -55,7 +61,8 @@
         inventory.nixosModules.default
         dictee.nixosModules.default
         meals.nixosModules.default
-        assistant.nixosModules.default
+        project.nixosModules.default
+        wip.nixosModules.default
       ];
     };
   };

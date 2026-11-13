@@ -107,20 +107,24 @@
     instances.ben.port = 9920;
   };
 
-  services.assistant = {
+  # Personal site: main is fetched and built every 5 min, Caddy serves it (publishing = git push).
+  services.wip = {
+    enable = true;
+    domain = "wip.bhr-sys.com";
+    repo = "git@github.com:ben-hourlier/wip.git";
+  };
+
+  services.project = {
     enable = true;
     instances.ben = {
       port = 9930;
-      # Repositories mirrored by backup.nix that the app reads in place: the
-      # Drill and Obsidian integrations (chosen in Settings → Integrations).
-      mirrors = {
-        drill = "/mnt/disk1/backups/github/Drill-Library.git";
-        notes = "/mnt/disk1/backups/github/Digital-Brain.git";
-      };
-      agents = {
+      # The Obsidian vault mirrored by backup.nix, opened whole (read-only)
+      # to the planner.
+      notes = "/mnt/disk1/backups/github/Digital-Brain.git";
+      ai = {
         enable = true;
         # CLAUDE_CODE_OAUTH_TOKEN=… from `claude setup-token` (Pro subscription).
-        environmentFile = config.sops.secrets.assistant-claude.path;
+        environmentFile = config.sops.secrets.project-claude.path;
       };
     };
   };
