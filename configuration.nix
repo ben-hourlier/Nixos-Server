@@ -25,6 +25,8 @@
   hardware.enableRedistributableFirmware = true;
   programs.nix-ld.enable = true;
   boot.loader.systemd-boot.enable = true;
+  # /boot is 512 MB: keep the last generations only (each one holds a kernel).
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "server1-nixos";
