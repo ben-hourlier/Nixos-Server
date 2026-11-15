@@ -50,10 +50,10 @@
                 type = "customapi";
                 url = "http://localhost:8081/backup-status.json";
                 mappings = [
-                  # {
-                  #   field = "github_sync";
-                  #   label = "Github Sync";
-                  # }
+                  {
+                    field = "github_sync";
+                    label = "Github Sync";
+                  }
                   {
                     field = "databases_dump";
                     label = "Databases Dump";
@@ -62,6 +62,18 @@
                     field = "kopia_snapshot";
                     label = "Kopia Snapshot";
                   }
+                ];
+              };
+            };
+          }
+          {
+            "Backup Kopia" = {
+              icon = "kopia.png";
+              href = "https://secure.backblaze.com/b2_buckets.htm";
+              widget = {
+                type = "customapi";
+                url = "http://localhost:8081/backup-status.json";
+                mappings = [
                   {
                     field = "sync_cloud";
                     label = "Sync Cloud";
@@ -70,7 +82,6 @@
                     field = "size";
                     label = "Size";
                   }
-                  
                 ];
               };
             };
