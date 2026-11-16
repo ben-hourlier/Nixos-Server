@@ -197,11 +197,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794517812,
-        "narHash": "sha256-nYHNGjHo+cMR3bOL2vtvIDOVZrxDkFluAtp/8L88/Ww=",
+        "lastModified": 1794817152,
+        "narHash": "sha256-WU7duY8x7OYoAjMExBnSgpkLoKArmWdb4qGRN2hHtw0=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "5dfd6d6b4ce3db241af5301a0d1077065e8ff3ed",
+        "rev": "8fd4aea94cb0f37b3a0e7a1e80bfa080926d5953",
         "type": "github"
       },
       "original": {
@@ -456,11 +456,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794489367,
-        "narHash": "sha256-9PICFEoXLSxmSNCW4SxZgbGh8yM9g0ViMtEs9kHnWx8=",
+        "lastModified": 1794828344,
+        "narHash": "sha256-dY0hOyh19UmHCOXUmpBJSLSWMvE+jIl2ZQBUSL53eGQ=",
         "ref": "refs/heads/main",
-        "rev": "e1b786a97347c30f003e8ee14251293387fee1a4",
-        "revCount": 23,
+        "rev": "1558e69ec6162cdef297f95203e984df76137529",
+        "revCount": 38,
         "type": "git",
         "url": "ssh://git@github.com/ben-hourlier/wip"
       },
