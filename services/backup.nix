@@ -294,4 +294,6 @@ in
       Persistent = true;
     };
   };
+
+  programs.fuse.enable = true;
 }
