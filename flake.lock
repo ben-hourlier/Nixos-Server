@@ -296,11 +296,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794756231,
-        "narHash": "sha256-OqRcaHi7lAlYvjCwL9DuvWjJvYnfBzR/P0Yru4uW82g=",
+        "lastModified": 1795004964,
+        "narHash": "sha256-0tSLrmU/sqLs7CfqJsnGZMhysM+1Lz9bpmG4Y8GjEG8=",
         "ref": "refs/heads/main",
-        "rev": "15a6fa18ee29deaf04a29b8fa27aa88ba174bea2",
-        "revCount": 63,
+        "rev": "9e8e81ca8b05ee37982bfdc8e35d7b3fbedcdfa9",
+        "revCount": 65,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/Project"
       },
