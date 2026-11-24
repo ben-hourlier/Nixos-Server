@@ -107,11 +107,19 @@
     instances.ben.port = 9920;
   };
 
+  # CV, letters and applications. Each new version of the general CV is published in
+  # /var/lib/cv/public, which the site reads (and rebuilds on) below.
+  services.cv = {
+    enable = true;
+    port = 9940;
+  };
+
   # Personal site: main is fetched and built every 5 min, Caddy serves it (publishing = git push).
   services.wip = {
     enable = true;
     domain = "wip.bhr-sys.com";
     repo = "git@github.com:ben-hourlier/wip.git";
+    cvDir = "/var/lib/cv/public";
   };
 
   services.project = {

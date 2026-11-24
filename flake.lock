@@ -21,9 +21,30 @@
         "type": "github"
       }
     },
-    "dictee": {
+    "cv": {
       "inputs": {
         "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795502532,
+        "narHash": "sha256-C9I/Gi8A6J5iJAlrJlLgQnaNpoUp+FZSrkevHJYbMo4=",
+        "ref": "refs/heads/main",
+        "rev": "7d97d216d5ea274aea7253ee599b6d0239d7e643",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/CV"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/bhr-tools/CV"
+      }
+    },
+    "dictee": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -65,11 +86,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1791914995,
-        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "lastModified": 1794427683,
+        "narHash": "sha256-o7ey9gEilsxaifqJWnBDlYSKbNWYQYtKwDyXeZU2kaU=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "rev": "cd489559845d81f673a12885576016c65cbe9363",
         "type": "github"
       },
       "original": {
@@ -83,11 +104,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
         "type": "github"
       },
       "original": {
@@ -137,11 +158,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1791914995,
-        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -168,9 +189,27 @@
         "type": "github"
       }
     },
+    "flake-utils_8": {
+      "inputs": {
+        "systems": "systems_8"
+      },
+      "locked": {
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "focus": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -191,17 +230,17 @@
     },
     "getDone": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1794817152,
-        "narHash": "sha256-WU7duY8x7OYoAjMExBnSgpkLoKArmWdb4qGRN2hHtw0=",
+        "lastModified": 1795503005,
+        "narHash": "sha256-ATNtYcU4MdNmdzNCDLi60SmLbQ57Ou6gnVAwdizZyEg=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "8fd4aea94cb0f37b3a0e7a1e80bfa080926d5953",
+        "rev": "2b6a5b16e43ad8d8b4c2a45d7b82883b2d8b4c9a",
         "type": "github"
       },
       "original": {
@@ -212,7 +251,7 @@
     },
     "inventory": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": "flake-utils_6",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -238,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794845291,
-        "narHash": "sha256-sy5MBqh64LTxqTts5hiyTCTk0Udimoe/F/BFy/VwWEA=",
+        "lastModified": 1795502513,
+        "narHash": "sha256-ef7uKCP6NX3RyiZ3gJum/Pxj06F072+8TnjVfmLXMp0=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "be082c719b31542011135174ad0bac073bf008f9",
+        "rev": "8325f50a5f7a397601d26ae1745f897a6b9fc66b",
         "type": "github"
       },
       "original": {
@@ -253,7 +292,7 @@
     },
     "meals": {
       "inputs": {
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_7",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -290,17 +329,17 @@
     },
     "project": {
       "inputs": {
-        "flake-utils": "flake-utils_7",
+        "flake-utils": "flake-utils_8",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1795096044,
-        "narHash": "sha256-9fq/V/+Yz2cqOWma4xftCl43lPhqroJcop+bHi3e1Rc=",
+        "lastModified": 1795501888,
+        "narHash": "sha256-l0BkaMx8zZXJXXmV500VFnhW0VWti6YvNqcILkEWz30=",
         "ref": "refs/heads/main",
-        "rev": "a8db9aae82cd501cc881c1d2e4eea82c8f34f5e1",
-        "revCount": 71,
+        "rev": "ef8b1a1fb42f5e631eec4aafeec1e927b2bd0faa",
+        "revCount": 72,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/Project"
       },
@@ -312,6 +351,7 @@
     "root": {
       "inputs": {
         "calendar": "calendar",
+        "cv": "cv",
         "dictee": "dictee",
         "focus": "focus",
         "getDone": "getDone",
@@ -361,11 +401,11 @@
     },
     "systems_2": {
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "lastModified": 1791244623,
+        "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",
         "owner": "nix-systems",
         "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "rev": "d36eeed142f88b5a636f2e3856a53c61654cf29b",
         "type": "github"
       },
       "original": {
@@ -449,6 +489,21 @@
         "type": "github"
       }
     },
+    "systems_8": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "wip": {
       "inputs": {
         "nixpkgs": [
@@ -456,11 +511,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794849936,
-        "narHash": "sha256-PWZhEGV1Lnc/qqpMV+sLbkoayW4QMTNCOE32DnHs+eA=",
+        "lastModified": 1795461450,
+        "narHash": "sha256-X0cJQGX8aYUiZFKZwHFRDW5yMMJiC00REv/1rANmI20=",
         "ref": "refs/heads/main",
-        "rev": "0d3f8550dae1d2b703d3ca5a7cc565da78814b7d",
-        "revCount": 40,
+        "rev": "c3570474217c799ad7fd002251493450aec08006",
+        "revCount": 41,
         "type": "git",
         "url": "ssh://git@github.com/ben-hourlier/wip"
       },

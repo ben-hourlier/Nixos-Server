@@ -40,6 +40,11 @@
       url = "git+ssh://git@github.com/bhr-tools/Project";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cv = {
+      # CV, letters and applications (private repository, like Project).
+      url = "git+ssh://git@github.com/bhr-tools/CV";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wip = {
       # Personal site (private repository). Only the NixOS module and node_modules come from
       # here: the server fetches and builds main itself (services.wip).
@@ -48,7 +53,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, project, wip, ... }: {
+  outputs = { self, nixpkgs, sops-nix, focus, getDone, calendar, mail, inventory, dictee, meals, project, cv, wip, ... }: {
     nixosConfigurations.server1-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -62,6 +67,7 @@
         dictee.nixosModules.default
         meals.nixosModules.default
         project.nixosModules.default
+        cv.nixosModules.default
         wip.nixosModules.default
       ];
     };

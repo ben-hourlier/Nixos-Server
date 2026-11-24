@@ -173,6 +173,10 @@
         extraConfig = "reverse_proxy localhost:9920";
       };
 
+      "cv.bhr-sys.com" = {
+        extraConfig = "reverse_proxy localhost:9940";
+      };
+
       "project.bhr-sys.com" = {
         extraConfig = "reverse_proxy localhost:9930";
       };

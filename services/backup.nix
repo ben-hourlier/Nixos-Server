@@ -56,9 +56,9 @@ let
         done
       fi
 
-      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals, Project):
+      # Self-hosted apps (GetDone, Focus, Calendar, Inventory, Meals, Project, CV):
       # one SQLite database per instance directory, so new instances are picked up as is.
-      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db /var/lib/project-*/*.db; do
+      for db in /var/lib/getdone-*/*.db /var/lib/focus-*/*.db /var/lib/calendar-*/*.db /var/lib/inventory-*/*.db /var/lib/meals-*/*.db /var/lib/project-*/*.db /var/lib/cv/*.db; do
         [ -f "$db" ] || continue
         app_dir="$(basename "$(dirname "$db")")"
         mkdir -p "${dumpDir}/apps/$app_dir"
@@ -190,9 +190,9 @@ in
       kopia repository connect filesystem --path /mnt/disk1/backups/kopia
 
       # Files attached in Inventory (invoices, manuals) and GetDone (tickets,
-      # photos); their databases are in the dumps.
+      # photos), and the PDFs sent with each application (CV); their databases are in the dumps.
       attachments=()
-      for dir in /var/lib/inventory-*/attachments /var/lib/getdone-*/attachments; do
+      for dir in /var/lib/inventory-*/attachments /var/lib/getdone-*/attachments /var/lib/cv/sent; do
         if [ -d "$dir" ]; then attachments+=("$dir"); fi
       done
 
