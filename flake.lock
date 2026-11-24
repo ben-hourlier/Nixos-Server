@@ -277,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795502513,
-        "narHash": "sha256-ef7uKCP6NX3RyiZ3gJum/Pxj06F072+8TnjVfmLXMp0=",
+        "lastModified": 1795531078,
+        "narHash": "sha256-6mCrjCpCZ3STsgbBbSC/B9tjSw/MFooh0H9PvyHPqDA=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "8325f50a5f7a397601d26ae1745f897a6b9fc66b",
+        "rev": "403d44c3d1cf69ac113206add09c935edd006817",
         "type": "github"
       },
       "original": {
