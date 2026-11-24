@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795502532,
-        "narHash": "sha256-C9I/Gi8A6J5iJAlrJlLgQnaNpoUp+FZSrkevHJYbMo4=",
+        "lastModified": 1795510801,
+        "narHash": "sha256-rKmUk+2PYckIe9VR59UmpQfsOykKdQhfbwS81V4DjEk=",
         "ref": "refs/heads/main",
-        "rev": "7d97d216d5ea274aea7253ee599b6d0239d7e643",
-        "revCount": 4,
+        "rev": "af1ed6b1e890d5de6a5be37f4b2ba90cd808df8b",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/CV"
       },
@@ -50,11 +50,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793371781,
-        "narHash": "sha256-MnL9vjX0oDNHhNqQcWbVF/WzzL5zXUNDhtQSwYHeXyY=",
+        "lastModified": 1795510803,
+        "narHash": "sha256-C/dr7s2vbqvCJTf3UsTaFbPmYQMUqN6A+XVlr5mi/qc=",
         "owner": "bhr-tools",
         "repo": "Dictee",
-        "rev": "8b9a8613aadbf81f1ad0b37699688d94ccc485d1",
+        "rev": "3bc6f40751140edbfe8af6a4637dc9a9f937cc66",
         "type": "github"
       },
       "original": {

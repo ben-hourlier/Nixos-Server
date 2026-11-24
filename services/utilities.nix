@@ -92,20 +92,8 @@
     };
   };
 
-  services.calendar = { 
-    enable = true; 
-    instances.ben.port = 9880; 
-  };
-
-  services.inventory = {
-    enable = true;
-    instances.ben.port = 9900;
-  };
-
-  services.meals = {
-    enable = true;
-    instances.ben.port = 9920;
-  };
+  # Instances of my apps (port, domain, dashboard) are declared in sites.nix;
+  # only their app-specific settings live here.
 
   # CV, letters and applications. Each new version of the general CV is published in
   # /var/lib/cv/public, which the site reads (and rebuilds on) below.
@@ -123,9 +111,7 @@
   };
 
   services.project = {
-    enable = true;
     instances.ben = {
-      port = 9930;
       # The Obsidian vault mirrored by backup.nix, opened whole (read-only)
       # to the planner.
       notes = "/mnt/disk1/backups/github/Digital-Brain.git";
@@ -141,9 +127,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
 
   services.webmail = {
-    enable = true;
     instances.ben = {
-      port = 9890;
       accountsFile = config.sops.templates."webmail-accounts.json".path;
       accounts = {
         perso = { name = "Perso"; address = config.sops.placeholder.mail-perso-address; realName = "Ben";
@@ -157,57 +141,6 @@
           imap.host = "partage.toulouse-inp.fr";
           smtp = { host = "partage.toulouse-inp.fr"; port = 587; security = "starttls"; };
           folders.archive = "Archive"; };
-      };
-    };
-  };
-
-  services.focus = {
-    enable = true;
-    instances = {
-      ben = {
-        port = 8765;
-      };
-
-      nina = {
-        port = 8766;
-      };
-
-      raph = {
-        port = 8767;
-      };
-
-      kilian = {
-        port = 8768;
-      };
-    };
-  };
-
-  services.getdone = {
-    enable = true;
-    instances = {
-      ben = {
-        port = 9870;
-        host = "127.0.0.1";
-      };
-
-      nina = {
-        port = 9871;
-        host = "127.0.0.1";
-      };
-
-      oscar = {
-        port = 9872;
-        host = "127.0.0.1";
-      };
-
-      kilian = {
-        port = 9873;
-        host = "127.0.0.1";
-      };
-
-      vic = {
-        port = 9874;
-        host = "127.0.0.1";
       };
     };
   };

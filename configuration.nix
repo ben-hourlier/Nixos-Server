@@ -7,15 +7,18 @@
 
   imports = [ 
     ./hardware-configuration.nix
+    ./modules/homelab.nix
 
     ./secrets/sops.nix
 
     ./services/backup.nix
     ./services/dashboard.nix
+    ./services/health.nix
     ./services/infrastructure.nix
     ./services/media.nix
     ./services/media-cleanup.nix
     ./services/network.nix
+    ./services/sites.nix
     ./services/utilities.nix
   ];
 

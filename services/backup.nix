@@ -24,6 +24,7 @@ let
   ];
 
   dumpDir = "/mnt/disk1/backups/dumps";
+  canaryDir = "/var/lib/backup-canary";
 
   # Script d'extraction des bases de données avec validation ShellCheck intégrée
   dumpScript = pkgs.writeShellApplication {
@@ -83,6 +84,10 @@ let
       SIZE="Unknown"
       if [ "$RESULT" = "success" ]; then
         STATUS="$NOW ✅"
+        # Time of the last success, read by services/health.nix (survives reboots,
+        # unlike the units' own timestamps).
+        mkdir -p /var/lib/backup-status
+        date +%s > "/var/lib/backup-status/$STEP"
         if [ "$STEP" = "kopia_snapshot" ] && [ -d /mnt/disk1/backups/kopia ]; then
           SIZE=$(du -sh /mnt/disk1/backups/kopia | cut -f1)
         fi
@@ -196,7 +201,15 @@ in
         if [ -d "$dir" ]; then attachments+=("$dir"); fi
       done
 
+      # Canary: a file whose content changes at every backup. kopia-verify-cloud
+      # restores it from Backblaze and compares: that proves today's backup reached
+      # the cloud and can be read back (a constant file would be deduplicated, and
+      # restoring it would only prove that its first upload arrived).
+      mkdir -p ${canaryDir}
+      printf '%s %s\n' "$(date -Is)" "$(head -c 16 /dev/urandom | od -An -tx1 | tr -d ' \n')" > ${canaryDir}/canary
+
       kopia snapshot create \
+        ${canaryDir} \
         "${dumpDir}" \
         "''${attachments[@]}" \
         /var/lib/actual \
@@ -244,6 +257,56 @@ in
   };
 
   # --------------------------------------------------------------------
+  # 4b. Verification of the Backblaze copy, after each sync
+  # --------------------------------------------------------------------
+  # Read-only, through a connection of its own (--config-file), so the local
+  # repository's connection is never touched. Three checks:
+  #   - consistency: every block the snapshots refer to exists in the bucket;
+  #   - sample: 2 % of the files, drawn at random, downloaded, decrypted and checked
+  #     (the whole backup is covered within weeks; B2 egress is free up to three
+  #     times the stored volume per month);
+  #   - canary: today's canary restored and compared with the local one.
+  # Its result is recorded like the other steps (verify_cloud), so health.nix sees it.
+  systemd.services.kopia-verify-cloud = {
+    description = "Vérification de la copie Kopia sur Backblaze B2";
+    after = [ "kopia-sync-cloud.service" "network-online.target" ];
+    wants = [ "network-online.target" ];
+    path = with pkgs; [ kopia coreutils diffutils jq ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      # KOPIA_PASSWORD, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+      EnvironmentFile = config.sops.secrets.kopia.path;
+      StateDirectory = "kopia-verify";
+      ExecStopPost = [
+        "${updateStatusScript}/bin/update-backup-status verify_cloud"
+      ];
+    };
+
+    script = ''
+      set -euo pipefail
+      cloud=(kopia --config-file=/var/lib/kopia-verify/repository.config)
+
+      "''${cloud[@]}" repository connect s3 --readonly \
+        --bucket="server1-nixos-backup" \
+        --endpoint="s3.eu-central-003.backblazeb2.com"
+
+      "''${cloud[@]}" snapshot verify --verify-files-percent=2 --file-parallelism=4
+
+      latest=$("''${cloud[@]}" snapshot list ${canaryDir} --json | jq -r 'max_by(.startTime) | .id')
+      restored=$(mktemp -d)
+      trap 'rm -rf "$restored"' EXIT
+      "''${cloud[@]}" snapshot restore "$latest" "$restored"
+      if ! cmp -s "$restored/canary" ${canaryDir}/canary; then
+        echo "canary: the copy on Backblaze is not today's backup" >&2
+        exit 1
+      fi
+      echo "canary: OK ($(cat ${canaryDir}/canary))"
+    '';
+  };
+
+  # --------------------------------------------------------------------
   # 5. Maintenance hebdomadaire (Séparée du flux quotidien)
   # --------------------------------------------------------------------
   systemd.services.kopia-maintenance = {
@@ -272,7 +335,7 @@ in
   # --------------------------------------------------------------------
   # 6. Timer principal de sauvegarde journalière
   # --------------------------------------------------------------------
-  # On enchaîne : dump -> snapshot -> sync cloud
+  # On enchaîne : dump -> snapshot -> sync cloud -> vérification cloud
   systemd.services.backup-pipeline = {
     description = "Pipeline complet de sauvegarde journalière";
     wants = [ "github-sync.service" ];
@@ -283,6 +346,7 @@ in
         "${pkgs.systemd}/bin/systemctl start --wait backup-dump-databases.service"
         "${pkgs.systemd}/bin/systemctl start --wait kopia-snapshot.service"
         "${pkgs.systemd}/bin/systemctl start --wait kopia-sync-cloud.service"
+        "${pkgs.systemd}/bin/systemctl start --wait kopia-verify-cloud.service"
       ];
     };
   };

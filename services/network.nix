@@ -95,124 +95,12 @@
   # --- Reverse Proxy ---
   # ====================================================================
 
+  # Public sites and their reverse proxies are generated from services/sites.nix.
   services.caddy = {
     enable = true;
     # DICTEE_HASH='<bcrypt from `caddy hash-password`>'
     environmentFile = config.sops.secrets.caddy-env.path;
     virtualHosts = {
-
-      "budget.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:5006";
-      };
-
-      "calendar.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9880";
-      };
-
-      "files.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8080";
-      };
-
-      "dictee.bhr-sys.com" = {
-        extraConfig = ''
-          request_body {
-            max_size 200MB
-          }
-          basic_auth {
-            dictee {$DICTEE_HASH}
-          }
-          reverse_proxy localhost:9910
-        '';
-      };
-
-      "focus.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8765";
-      };
-
-      "nina.focus.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8766";
-      };
-
-      "raph.focus.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8767";
-      };
-
-      "kilian.focus.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8768";
-      };
-
-      "getdone.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9870";
-      };
-
-      "nina.getdone.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9871";
-      };
-
-      "oscar.getdone.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9872";
-      };
-
-      "kilian.getdone.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9873";
-      };
-
-      "vic.getdone.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9874";
-      };
-
-      "immich.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:2283";
-      };
-
-      "inventory.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9900";
-      };
-
-      "meals.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9920";
-      };
-
-      "cv.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9940";
-      };
-
-      "project.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9930";
-      };
-
-      "jellyfin.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8096";
-      };
-
-      "mail.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9890";
-      };
-
-      "paperless.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:28981";
-      };
-
-      "radarr.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:7878";
-      };
-
-      "seerr.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:5055";
-      };
-
-      "sonarr.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8989";
-      };
-
-      "vault.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:8222";
-      };
-
-      "vpn.bhr-sys.com" = {
-        extraConfig = "reverse_proxy localhost:9080";
-      };
-
       ":8081" = {
         # Caddyfile language injection
         # "root *" define root folder for all requests
