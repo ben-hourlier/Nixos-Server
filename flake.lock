@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795510801,
-        "narHash": "sha256-rKmUk+2PYckIe9VR59UmpQfsOykKdQhfbwS81V4DjEk=",
+        "lastModified": 1795625077,
+        "narHash": "sha256-l5cx7PKJjso3sHEoHd57sNdA9klgPHm4Pi5hvtn+BQw=",
         "ref": "refs/heads/main",
-        "rev": "af1ed6b1e890d5de6a5be37f4b2ba90cd808df8b",
-        "revCount": 5,
+        "rev": "72cede91b2ab28adda52a62466b2ffd662e3955e",
+        "revCount": 13,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/CV"
       },
@@ -231,16 +231,17 @@
     "getDone": {
       "inputs": {
         "flake-utils": "flake-utils_5",
+        "kit": "kit",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1795503005,
-        "narHash": "sha256-ATNtYcU4MdNmdzNCDLi60SmLbQ57Ou6gnVAwdizZyEg=",
+        "lastModified": 1795641871,
+        "narHash": "sha256-q0E8NVMuXT+JfuizG54wq7eJXMeC7Ep7HQrfsF2SPsY=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "2b6a5b16e43ad8d8b4c2a45d7b82883b2d8b4c9a",
+        "rev": "08ed7f9f2515b343f667e458c0a1b57f4845bef8",
         "type": "github"
       },
       "original": {
@@ -267,6 +268,27 @@
       "original": {
         "owner": "bhr-tools",
         "repo": "Inventory",
+        "type": "github"
+      }
+    },
+    "kit": {
+      "inputs": {
+        "nixpkgs": [
+          "getDone",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795640105,
+        "narHash": "sha256-q6WVMq0ustSbZ3Pi7ps03gGRzcJ07jz+od8j48XmQXA=",
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "rev": "964f9a61f2368b23e81b92774744d99c4df9d4e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bhr-tools",
+        "repo": "kit",
         "type": "github"
       }
     },
