@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794299203,
-        "narHash": "sha256-VZsGenmFN/KMuxhK1ji+JjxXl3H6KTP6TUI26clEPSI=",
+        "lastModified": 1795592836,
+        "narHash": "sha256-0wm/yT3d5yb4kO2mPGnWAOiOI7Iz8z8kMG2Rfm2bcRQ=",
         "owner": "bhr-tools",
         "repo": "Focus",
-        "rev": "88d600661c29955d881a7f5405a5613bf219f81b",
+        "rev": "94f621b1ce14d0c799336b97395c90886a3760f9",
         "type": "github"
       },
       "original": {
