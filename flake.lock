@@ -253,16 +253,17 @@
     "inventory": {
       "inputs": {
         "flake-utils": "flake-utils_6",
+        "kit": "kit_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1793538008,
-        "narHash": "sha256-aNiJtyzhpP2aIKTYIg4rMz7xukpLhBwZoEhtl8pXk1E=",
+        "lastModified": 1795716607,
+        "narHash": "sha256-+R/5D1q60xmpksqoosmtxfgwaitA4QY6aK9VwPIG6Rg=",
         "owner": "bhr-tools",
         "repo": "Inventory",
-        "rev": "5f0f944d7afee818ee9ddea2a318a5338bc044cf",
+        "rev": "d73a08e9708deb7c0f4254f2ee7d4acd75c735cb",
         "type": "github"
       },
       "original": {
@@ -293,6 +294,27 @@
       }
     },
     "kit_2": {
+      "inputs": {
+        "nixpkgs": [
+          "inventory",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795716298,
+        "narHash": "sha256-DUxl3Hxbb41pnxb/IM307STl8fzXh9Oja0U1pAvXZmY=",
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "rev": "593a877de5c66a81ff66df503726cf22de6c863c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "type": "github"
+      }
+    },
+    "kit_3": {
       "inputs": {
         "nixpkgs": [
           "meals",
@@ -336,7 +358,7 @@
     "meals": {
       "inputs": {
         "flake-utils": "flake-utils_7",
-        "kit": "kit_2",
+        "kit": "kit_3",
         "nixpkgs": [
           "nixpkgs"
         ]
