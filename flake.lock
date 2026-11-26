@@ -317,6 +317,27 @@
     "kit_3": {
       "inputs": {
         "nixpkgs": [
+          "mail",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795713973,
+        "narHash": "sha256-lqtMgmZBfIdw6P6Uo2TfFcUX6fgdDjs40ZZzHaT3ZvU=",
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "rev": "cc61ba46d4f342017c918d79691906566ca93adc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "type": "github"
+      }
+    },
+    "kit_4": {
+      "inputs": {
+        "nixpkgs": [
           "meals",
           "nixpkgs"
         ]
@@ -337,16 +358,17 @@
     },
     "mail": {
       "inputs": {
+        "kit": "kit_3",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1795531078,
-        "narHash": "sha256-6mCrjCpCZ3STsgbBbSC/B9tjSw/MFooh0H9PvyHPqDA=",
+        "lastModified": 1795726640,
+        "narHash": "sha256-x4VBTaJalEYYgjRcvq91zQPKOPkG6e5813yMxO0svus=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "403d44c3d1cf69ac113206add09c935edd006817",
+        "rev": "2aa8891c8fe100f7bcec12077a18837c1cec1b64",
         "type": "github"
       },
       "original": {
@@ -358,7 +380,7 @@
     "meals": {
       "inputs": {
         "flake-utils": "flake-utils_7",
-        "kit": "kit_3",
+        "kit": "kit_4",
         "nixpkgs": [
           "nixpkgs"
         ]
