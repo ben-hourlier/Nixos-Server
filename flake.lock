@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795717041,
-        "narHash": "sha256-a4Z0UAdwwRtwCFD1ALNuXTJs/xpOFbpy4UZtudhaZiQ=",
+        "lastModified": 1795718034,
+        "narHash": "sha256-9zfS7Va0dZ39169mrhEKGJd5joPT0FI5BDn+X94UBXc=",
         "ref": "refs/heads/main",
-        "rev": "fd185e11f03fb73cd9e85aeb4539a1fd9a1a3b37",
-        "revCount": 15,
+        "rev": "decd263044bb313cb861c2c1fc866d883dea1433",
+        "revCount": 16,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/CV"
       },
