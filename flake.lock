@@ -342,11 +342,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795681729,
-        "narHash": "sha256-aX0Rj0l66AGwhhu9tItt3YivvJytP3BlwBNv2YAJo3g=",
+        "lastModified": 1795701282,
+        "narHash": "sha256-1wPrH4trI2WY4ThOAP8c2MSlAQbUSeIyRp/hRXCCTNk=",
         "owner": "bhr-tools",
         "repo": "Meals",
-        "rev": "f57d82e4ec3656b1ed9db73b56a1f636f07ed588",
+        "rev": "7b9789ee1039b3b8037d36e2db77fff0899e8073",
         "type": "github"
       },
       "original": {
