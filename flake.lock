@@ -292,6 +292,27 @@
         "type": "github"
       }
     },
+    "kit_2": {
+      "inputs": {
+        "nixpkgs": [
+          "meals",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795640975,
+        "narHash": "sha256-YtxIa29aYdNeRtBNK4+0QmBNnsmtzcFaLXFj9WI/SpU=",
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "rev": "4092a426f00937a1b1ddb233fbb1868343054454",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bhr-tools",
+        "repo": "kit",
+        "type": "github"
+      }
+    },
     "mail": {
       "inputs": {
         "nixpkgs": [
@@ -315,16 +336,17 @@
     "meals": {
       "inputs": {
         "flake-utils": "flake-utils_7",
+        "kit": "kit_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1795525246,
-        "narHash": "sha256-vqqUf5K/Mi8hcwF3Dd4p5hZCFElFgGy3dg/STM820Fk=",
+        "lastModified": 1795681729,
+        "narHash": "sha256-aX0Rj0l66AGwhhu9tItt3YivvJytP3BlwBNv2YAJo3g=",
         "owner": "bhr-tools",
         "repo": "Meals",
-        "rev": "4a9fd6c7efde8d64637dd0d3755d040677e4de58",
+        "rev": "f57d82e4ec3656b1ed9db73b56a1f636f07ed588",
         "type": "github"
       },
       "original": {
