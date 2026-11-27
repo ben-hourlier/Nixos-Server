@@ -9,11 +9,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795798076,
-        "narHash": "sha256-BZm1oTIcHhj7SKK1ejWMQVoKATvEQSzh0XVwdSqG3xA=",
+        "lastModified": 1795803760,
+        "narHash": "sha256-/WqfeCXZp32mvvEWOhZYTITHL24y0CrsB3CUJPnkal0=",
         "owner": "bhr-tools",
         "repo": "Calendar",
-        "rev": "59db8fa04761930bfc2d5a32d74fb34eabe0fb83",
+        "rev": "ebd7a24bbb8ac4923da502dd4ba1527c00360cfd",
         "type": "github"
       },
       "original": {
@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795797090,
-        "narHash": "sha256-v/vUovCAun5MiNic+/JWYUWIZj85Nmuao2iA4+pNQgo=",
+        "lastModified": 1795803767,
+        "narHash": "sha256-8YzKmqHQTsvBAa4mo2L54zxADPw6IqyBUmbHckJ3cgo=",
         "ref": "refs/heads/main",
-        "rev": "291cc489a8b5eeb1190f64ef491e6a159517eabe",
-        "revCount": 17,
+        "rev": "49e5379896cc81b1244b0b7c0d33f871a2f30a92",
+        "revCount": 18,
         "type": "git",
         "url": "ssh://git@github.com/bhr-tools/CV"
       },
@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795795934,
-        "narHash": "sha256-dONfBaWCAhEkLAvWZ6fdihMFYeWxIiJPELnGvGlOegM=",
+        "lastModified": 1795803757,
+        "narHash": "sha256-0kjlHdY4duHPxVTbPQyBM7lBKAnD+2w/qa3NTN3Db2k=",
         "owner": "bhr-tools",
         "repo": "GetDone",
-        "rev": "2c7eb4fb07fa1458f6e4f282682c11daebd712c9",
+        "rev": "df7a4701d18249df8ed038e0ad2b7b836ebcaef3",
         "type": "github"
       },
       "original": {
@@ -242,11 +242,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795716607,
-        "narHash": "sha256-+R/5D1q60xmpksqoosmtxfgwaitA4QY6aK9VwPIG6Rg=",
+        "lastModified": 1795803764,
+        "narHash": "sha256-ovSLcgpnKPgt0t5oox00cPlSdEqSfxTYbR3MAjHF/0c=",
         "owner": "bhr-tools",
         "repo": "Inventory",
-        "rev": "d73a08e9708deb7c0f4254f2ee7d4acd75c735cb",
+        "rev": "94712eca9da23ea83ea19f3f1782f9ecdcfedc0d",
         "type": "github"
       },
       "original": {
@@ -389,11 +389,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795797800,
-        "narHash": "sha256-nuIsDqB7JPcDOUVDvNg/FHkSxB8UeiwbKUiSNt+b1U0=",
+        "lastModified": 1795803769,
+        "narHash": "sha256-ZVM0Z4CThNbTepNlubYiDECWKbFgcK9qiRk4lJY0PeY=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "d50f2cc1607c416371b8fcfc01c662634a8a6186",
+        "rev": "e112b087d2524a7a533e9b622ad7c846558cafa5",
         "type": "github"
       },
       "original": {
@@ -411,11 +411,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795701282,
-        "narHash": "sha256-1wPrH4trI2WY4ThOAP8c2MSlAQbUSeIyRp/hRXCCTNk=",
+        "lastModified": 1795803762,
+        "narHash": "sha256-lmlafzJ6xu7woNZ6WB8Z9a72WwMF34isSNaOu3j7F2g=",
         "owner": "bhr-tools",
         "repo": "Meals",
-        "rev": "7b9789ee1039b3b8037d36e2db77fff0899e8073",
+        "rev": "6a91c2f4a178bc3dd6aa7a6d5be2da8b657395ae",
         "type": "github"
       },
       "original": {
