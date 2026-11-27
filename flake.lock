@@ -9,11 +9,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795716127,
-        "narHash": "sha256-Qyv+GuITrAzw1YbjHjXkLBMVvvcvJE31rJC5oV6fobE=",
+        "lastModified": 1795798076,
+        "narHash": "sha256-BZm1oTIcHhj7SKK1ejWMQVoKATvEQSzh0XVwdSqG3xA=",
         "owner": "bhr-tools",
         "repo": "Calendar",
-        "rev": "df72f463956fa2aec40a3633d08302e6d14a60d0",
+        "rev": "59db8fa04761930bfc2d5a32d74fb34eabe0fb83",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795796600,
-        "narHash": "sha256-bRIYVG7DX68shp2lfTdpBvZVwLpoa/+dEi+h8NWYdY0=",
+        "lastModified": 1795797800,
+        "narHash": "sha256-nuIsDqB7JPcDOUVDvNg/FHkSxB8UeiwbKUiSNt+b1U0=",
         "owner": "bhr-tools",
         "repo": "Mail",
-        "rev": "680fe79403879cd9c6948778e478d40165841d6e",
+        "rev": "d50f2cc1607c416371b8fcfc01c662634a8a6186",
         "type": "github"
       },
       "original": {
